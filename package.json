@@ -2,11 +2,13 @@
   "name": "namegame-js1",
   "version": "0.0.1",
   "description": "NameGame app js backend using koe.js, TypeORM and GraphQL",
-  "main": "index.js",
+  "main": "dist/server.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "npx tsc && node dist/server.js",
+    "watch": "tsx watch ./src/*",
+    "dev": "tsx watch ./src/server.ts"
   },
   "author": "AspiringX",
   "license": "ISC",
@@ -16,6 +18,10 @@
     "typeorm": "^0.3.20"
   },
   "devDependencies": {
+    "@types/koa": "^2.15.0",
+    "@types/koa-graphql": "^0.8.11",
+    "@types/node": "^20.11.24",
+    "tsx": "^4.7.1",
     "typescript": "^5.3.3"
   }
 }
