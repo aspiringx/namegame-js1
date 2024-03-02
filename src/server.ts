@@ -1,5 +1,6 @@
 import Koa from 'koa';
 import KoaRouter from '@koa/router';
+import 'dotenv/config';
 
 const app: Koa = new Koa();
 const router: KoaRouter = new KoaRouter();
