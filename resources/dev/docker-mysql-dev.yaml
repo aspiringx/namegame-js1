@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+
+  namegame-mysql:
+    image: mysql:8.0
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_DATABASE=namegame-js1
+      - MYSQL_USER=namegame-js1
+      - MYSQL_PASSWORD=namegame
+      - MYSQL_ROOT_PASSWORD=namegame
