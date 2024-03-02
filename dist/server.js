@@ -7,10 +7,15 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import Koa from "koa";
+import Koa from 'koa';
+import KoaRouter from 'koa-router';
 const app = new Koa();
+const router = new KoaRouter();
 const port = 3000;
-app.use((ctx) => __awaiter(void 0, void 0, void 0, function* () { return (ctx.body = 'Hello World'); }));
+app.use((ctx) => __awaiter(void 0, void 0, void 0, function* () {
+    ctx.body = 'Hello World';
+}));
+router.use('/test', ctx => (ctx.body = 'Hello Test'));
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
