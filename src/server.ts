@@ -1,11 +1,14 @@
-import Koa from "koa";
+import Koa from 'koa';
+import KoaRouter from '@koa/router';
 
 const app: Koa = new Koa();
+const router: KoaRouter = new KoaRouter();
 const port: number = 3000;
 
-app.use(async (ctx: Koa.Context) => {
-  ctx.body = 'Hello World';
-});
+router.get('/', (ctx: Koa.Context) => {ctx.body = 'Hello Test'});
+
+// Router Middleware
+app.use(router.routes()).use(router.allowedMethods());
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`)
