@@ -2,7 +2,7 @@
   "name": "namegame-js1",
   "version": "0.0.1",
   "description": "NameGame app js backend using koe.js, TypeORM and GraphQL",
-  "main": "dist/server.js",
+  "main": "build/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npx tsc && node build/server.js",
