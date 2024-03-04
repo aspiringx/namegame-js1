@@ -3,10 +3,9 @@
   "version": "0.0.1",
   "description": "NameGame app js backend using koe.js, TypeORM and GraphQL",
   "main": "dist/server.js",
-  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npx tsc && node dist/server.js",
+    "start": "npx tsc && node build/server.js",
     "watch": "tsx watch ./src/*",
     "dev": "tsx watch ./src/server.ts"
   },
