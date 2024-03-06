@@ -6,11 +6,11 @@ import "reflect-metadata";
 import { AppDataSource } from "./data-source"
 import { User } from "./entity/User"
 
-const port: number = 3000;
-const app = new Koa();
-const router: Router = new Router();
-
 AppDataSource.initialize().then(() => {
+  const port: number = +process.env.APP_PORT || 3000;
+  const app = new Koa();
+  const router: Router = new Router();
+
   // Routes
   router.get('/', (ctx: Koa.Context) => {ctx.body = 'Hello Test'});
 
