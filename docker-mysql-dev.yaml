@@ -3,6 +3,7 @@ services:
 
   namegame-mysql:
     image: mysql:8.0
+    container_name: ${MYSQL_DATABASE}
     ports:
       - 3306:3306
     environment:
@@ -10,3 +11,6 @@ services:
       - MYSQL_USER=${MYSQL_USER}
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+    # Uncomment to persist data in a volume
+    # volumes:
+    #   - ./mysql_data:/var/lib/mysql
