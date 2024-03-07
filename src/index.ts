@@ -4,7 +4,6 @@ import { setupRoutes } from './routes';
 
 import "reflect-metadata";
 import { AppDataSource } from "./data-source";
-import { User } from "./entity/User";
 
 const app = new Koa();
 const port: number = +process.env.APP_PORT || 3000;
