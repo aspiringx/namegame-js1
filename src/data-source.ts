@@ -14,7 +14,6 @@ export const AppDataSource = new DataSource({
     username: username,
     password: password,
     database: database,
-    synchronize: true,
     logging: false,
     entities: [`${__dirname}/**/entity/*.{ts,js}`],
     migrations: [`${__dirname}/**/migration/*.{ts,js}`],
