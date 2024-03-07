@@ -1,24 +1,19 @@
-import Koa from 'koa';
-import Router from '@koa/router';
 import 'dotenv/config';
+import Koa from 'koa';
+import { setupRoutes } from './routes';
+
 import "reflect-metadata";
+import { AppDataSource } from "./data-source";
+import { User } from "./entity/User";
 
-import { AppDataSource } from "./data-source"
-import { User } from "./entity/User"
+const app = new Koa();
+const port: number = +process.env.APP_PORT || 3000;
 
-AppDataSource.initialize().then(() => {
-  const port: number = +process.env.APP_PORT || 3000;
-  const app = new Koa();
-  const router: Router = new Router();
-
+AppDataSource.initialize().then(async () => {
   // Routes
-  router.get('/', (ctx: Koa.Context) => {ctx.body = 'Hello Test'});
-
-  // Router Middleware
-  app.use(router.routes()).use(router.allowedMethods());
+  setupRoutes(app);
 
   return app.listen(port, () => {
-    console.log(`Server is running on port ${port}`)
+    console.log(`Server is running on port ${port}`);
   });
-})
-
+}).catch(error => console.log(error));
