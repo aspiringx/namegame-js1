@@ -6,7 +6,7 @@ import "reflect-metadata";
 import { AppDataSource } from "./data-source";
 
 const app = new Koa();
-const port: number = +process.env.APP_PORT || 3000;
+const port: number = Number(process.env.APP_PORT) || 3000;
 
 AppDataSource.initialize().then(async () => {
   // Routes

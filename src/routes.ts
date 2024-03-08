@@ -1,7 +1,7 @@
 import Router from "@koa/router";
-import { Context, Next } from "koa"; 
+import Koa, { Context, Next } from "koa";
 
-export function setupRoutes(app): void {
+export function setupRoutes(app: Koa): void {
     const router = new Router();
 
     router.get("/", async (ctx: Context, next: Next) => {

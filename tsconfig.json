@@ -4,11 +4,14 @@
          "es5",
          "es6"
       ],
-      "target": "es6",
-      "module": "commonjs",
+      "target": "ESNext",
+      "module": "ESNext",
       "moduleResolution": "node",
-      "outDir": "./build",
       "esModuleInterop": true,
+      "strict": true,
+      "baseUrl": ".",
+      "outDir": "./build",
+      "rootDir": "./src",
       "emitDecoratorMetadata": true,
       "experimentalDecorators": true,
       "sourceMap": true
