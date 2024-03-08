@@ -3,6 +3,7 @@
    "version": "0.0.1",
    "description": "NameGame app js backend using koe.js, TypeORM and GraphQL",
    "main": "build/index.js",
+   "type": "module",
    "scripts": {
       "test": "echo \"Error: no test specified\" && exit 1",
       "start": "npx tsx ./src/index.ts",
@@ -25,6 +26,7 @@
       "@types/koa__router": "^12.0.4",
       "@types/koa-graphql": "^0.8.11",
       "@types/node": "^18.11.9",
+      "ts-node": "^10.9.2",
       "tsx": "^4.7.1",
       "typescript": "^5.3.3"
    }
