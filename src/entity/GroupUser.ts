@@ -47,7 +47,7 @@ export class GroupUser {
     updated_at: Date;
 
     // Initialize properties to address TS strict mode.
-    now = new Date();
+    epoch = new Date(0);
 
     constructor() {
         this.id = 0;
@@ -55,10 +55,10 @@ export class GroupUser {
         this.user_id = 0;
         this.role = '';
         this.title = '';
-        this.member_since = this.now;
+        this.member_since = this.epoch;
         this.is_leader = false;
         this.is_active = true;
-        this.created_at = this.now;
-        this.updated_at = this.now;
+        this.created_at = this.epoch;
+        this.updated_at = this.epoch;
     }
 }

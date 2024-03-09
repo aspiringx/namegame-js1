@@ -43,19 +43,19 @@ export class User {
     updated_at: Date;
 
     // Initialize properties to address TS strict mode
-    now = new Date();
+    epoch = new Date();
 
     constructor() {
         this.id = 0;
         this.first_name = '';
         this.last_name = '';
         this.email = '';
-        this.email_verified_at = this.now;
+        this.email_verified_at = this.epoch;
         this.photo_url = '';
         this.mobile_phone = '';
-        this.mobile_phone_verified_at = this.now;
+        this.mobile_phone_verified_at = this.epoch;
         this.mobile_phone_carrier = '';
-        this.created_at = this.now;
-        this.updated_at = this.now;
+        this.created_at = this.epoch;
+        this.updated_at = this.epoch;
     }
 }
