@@ -3,9 +3,7 @@ import {
     PrimaryGeneratedColumn,
     Column,
     CreateDateColumn,
-    UpdateDateColumn,
-    OneToOne,
-    JoinColumn,
+    UpdateDateColumn
  } from "typeorm";
 
 @Entity({ name: "qr_codes" })
