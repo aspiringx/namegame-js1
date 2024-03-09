@@ -7,7 +7,7 @@ import {
     OneToOne,
     JoinColumn,
     Index
-} from "typeorm"
+} from "typeorm";
 import { User } from './User';
 import { Group } from './Group';
 
@@ -23,7 +23,7 @@ export class GroupUser {
 
     @OneToOne((type) => User, {onDelete: "CASCADE"})
     @JoinColumn({ name: 'user_id' })
-    user_id: string;
+    user_id: number;
 
     @Column({ type: 'varchar', nullable: true, comment: 'Role of user for permission pruposes.' })
     role: string;
@@ -52,7 +52,7 @@ export class GroupUser {
     constructor() {
         this.id = 0;
         this.group_id = 0;
-        this.user_id = '';
+        this.user_id = 0;
         this.role = '';
         this.title = '';
         this.member_since = this.now;
