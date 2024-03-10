@@ -8,7 +8,9 @@
       "test": "echo \"Error: no test specified\" && exit 1",
       "start": "npx tsx ./src/index.ts",
       "watch": "npx tsx watch ./src/index.ts",
-      "typeorm": "typeorm-ts-node-commonjs"
+      "typeorm": "npx typeorm-ts-node-es",
+      "migration:run": "npx tsx ./node_modules/typeorm/cli.js migration:run -d ./src/data-source.ts",
+      "migration:generate": "npx tsx ./node_modules/typeorm/cli.js migration:generate -d ./src/data-source.ts"
    },
    "author": "AspiringX",
    "license": "ISC",
