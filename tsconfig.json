@@ -9,7 +9,15 @@
       "moduleResolution": "node",
       "esModuleInterop": true,
       "strict": true,
-      "baseUrl": ".",
+      "baseUrl": ".src",
+      "paths": {
+         "@controller/*": ["app/controller/*"],
+         "@entity/*":     ["app/entity/*"],
+         "@repository/*": ["app/repository/*"],
+         "@service/*":    ["app/service/*"],
+         "@migration/*":  ["db/migration/*"],
+         "@seeder/*":     ["db/seeder/*"]
+      },
       "outDir": "./build",
       "rootDir": "./src",
       "emitDecoratorMetadata": true,
