@@ -9,8 +9,8 @@
       "start": "npx tsx ./src/index.ts",
       "watch": "npx tsx watch ./src/index.ts",
       "typeorm": "npx typeorm-ts-node-es",
-      "migration:run": "npx tsx ./node_modules/typeorm/cli.js migration:run -d ./src/data-source.ts",
-      "migration:generate": "npx tsx ./node_modules/typeorm/cli.js migration:generate -d ./src/data-source.ts"
+      "migration:run": "npx tsx ./node_modules/typeorm/cli.js migration:run -d ./src/db/data-source.ts",
+      "migration:generate": "npx tsx ./node_modules/typeorm/cli.js migration:generate -d ./src/db/data-source.ts"
    },
    "author": "AspiringX",
    "license": "ISC",
@@ -24,6 +24,7 @@
       "typeorm": "^0.3.20"
    },
    "devDependencies": {
+      "@faker-js/faker": "^8.4.1",
       "@types/koa": "^2.15.0",
       "@types/koa__router": "^12.0.4",
       "@types/koa-graphql": "^0.8.11",
