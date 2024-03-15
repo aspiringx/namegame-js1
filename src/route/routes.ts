@@ -8,7 +8,7 @@ const userController = new UserController();
 export function setupRoutes(app: Koa): void {
     const router = new Router();
 
-    // Sample Call:
+    // Sample Call (Step 1):
     // App flow demo: Router -> Controller -> Service -> Repository -> Entity
     router.post("/greet-user", async (ctx: Context, next: Next) => {
         return ctx.body = await userController.greetUser(ctx.request.body);
@@ -16,4 +16,5 @@ export function setupRoutes(app: Koa): void {
 
     app.use(router.routes());
     app.use(router.allowedMethods());
+
 }
