@@ -6,7 +6,8 @@ interface greetUserPayload {
 
 export class UserController {
 
-    // Sample call (Step 2)
+    // Sample call (Step 2): Request user name / Return custom message
+    // Business logic: Concatenate full name string and message
     async greetUser(payload: unknown) {
         const data = <greetUserPayload>payload;
         const name = await UserService.getUserName(data.email);
