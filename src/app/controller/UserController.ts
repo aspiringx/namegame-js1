@@ -15,13 +15,13 @@ export class UserController {
             return {
                 status: 'success',
                 data: {greeting: 'Welcome to the website ' + name + '.'},
-                msg: 'Successfully created user greeting.'
+                message: 'Successfully created user greeting.'
             }
         } else {
             return {
-                status: 'success',
+                status: 'error',
                 data: null,
-                msg: 'No user found.'
+                message: 'No user found.'
             }
         }
     }
