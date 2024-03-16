@@ -18,7 +18,7 @@ export class UserController {
 
     // Sample call (Step 2): Request user name / Return custom message
     // Business logic: Concatenate full name string and message
-    async greetUser(payload: unknown) {
+    static async greetUser(payload: unknown) {
         const data = <greetUserPayload>payload;
         const name = await UserService.getUserName(data.email);
 
@@ -39,25 +39,25 @@ export class UserController {
 
     // Basic calls
 
-    async getUser(id: number) {
+    static async getUser(id: number) {
         return UserService.getUser(id);
     }
 
-    async getAllUsers() {
+    static async getAllUsers() {
         return UserService.getAllUsers();
     }
 
-    async createUser(payload: unknown): Promise<User> {
+    static async createUser(payload: unknown): Promise<User> {
         const data = <createUserPayload>payload;
         return UserService.createUser(data.values);
     }
 
-    async updateUser(payload: unknown): Promise<User | null> {
+    static async updateUser(payload: unknown): Promise<User | null> {
         const data = <updateUserPayload>payload;
         return await UserService.updateUser(data.id, data.values);
     }
 
-    async deleteUser(id: number): Promise<void> {
+    static async deleteUser(id: number): Promise<void> {
         await UserService.deleteUser(id);
     }
 

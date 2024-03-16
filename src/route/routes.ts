@@ -11,34 +11,34 @@ export function setupRoutes(app: Koa): void {
     // Sample Call (Step 1): POST call to Controller
     // App flow demo: Router -> Controller -> Service -> Repository -> Entity
     router.post('/users/greet', async (ctx: Context, next: Next) => {
-        return ctx.body = await userController.greetUser(ctx.request.body);
+        return ctx.body = await UserController.greetUser(ctx.request.body);
     });
 
     /* User routes */
 
     // Get user by id
     router.get('/users/:id', async (ctx: Context, next: Next) => {
-        return ctx.body = await userController.getUser(ctx.params.id);
+        return ctx.body = await UserController.getUser(ctx.params.id);
     });
 
     // Get all users
     router.get('/users', async (ctx: Context, next: Next) => {
-        return ctx.body = await userController.getAllUsers();
+        return ctx.body = await UserController.getAllUsers();
     });
 
     // Create user
     router.post('/users/create', async (ctx: Context, next: Next) => {
-        return ctx.body = await userController.createUser(ctx.request.body);
+        return ctx.body = await UserController.createUser(ctx.request.body);
     });
 
     // Update user
     router.post('/users/update', async (ctx: Context, next: Next) => {
-        return ctx.body = await userController.updateUser(ctx.request.body);
+        return ctx.body = await UserController.updateUser(ctx.request.body);
     });
 
     // Delete user
     router.get('/users/delete/:id', async (ctx: Context, next: Next) => {
-        return ctx.body = await userController.deleteUser(ctx.params.id);
+        return ctx.body = await UserController.deleteUser(ctx.params.id);
     });
 
     app.use(router.routes());
