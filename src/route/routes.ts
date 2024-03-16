@@ -16,8 +16,8 @@ export function setupRoutes(app: Koa): void {
     /* User routes */
 
     // Get user by id
-    router.get('/users/:id', async (ctx: Context, next: Next) => {
-        return ctx.body = await UserController.getUser(ctx.params.id);
+    router.get('/users/:userId', async (ctx: Context, next: Next) => {
+        return ctx.body = await UserController.getUser(ctx.params.userId);
     });
 
     // Get all users
@@ -31,13 +31,13 @@ export function setupRoutes(app: Koa): void {
     });
 
     // Update user
-    router.post('/users/update', async (ctx: Context, next: Next) => {
-        return ctx.body = await UserController.updateUser(ctx.request.body);
+    router.put('/users/:userId', async (ctx: Context, next: Next) => {
+        return ctx.body = await UserController.updateUser(ctx.params.userId, ctx.request.body);
     });
 
     // Delete user
-    router.get('/users/delete/:id', async (ctx: Context, next: Next) => {
-        return ctx.body = await UserController.deleteUser(ctx.params.id);
+    router.delete('/users/:userId', async (ctx: Context, next: Next) => {
+        return ctx.body = await UserController.deleteUser(ctx.params.userId);
     });
 
     /* Group routes */
