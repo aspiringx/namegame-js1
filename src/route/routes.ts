@@ -14,6 +14,33 @@ export function setupRoutes(app: Koa): void {
         return ctx.body = await userController.greetUser(ctx.request.body);
     });
 
+    /* User routes */
+
+    // Get user by id
+    router.get('/users/:id', async (ctx: Context, next: Next) => {
+        return ctx.body = await userController.getUser(ctx.params.id);
+    });
+
+    // Get all users
+    router.get('/users', async (ctx: Context, next: Next) => {
+        return ctx.body = await userController.getAllUsers();
+    });
+
+    // Create user
+    router.post('/users/create', async (ctx: Context, next: Next) => {
+        return ctx.body = await userController.createUser(ctx.request.body);
+    });
+
+    // Update user
+    router.post('/users/update', async (ctx: Context, next: Next) => {
+        return ctx.body = await userController.updateUser(ctx.request.body);
+    });
+
+    // Delete user
+    router.get('/users/delete/:id', async (ctx: Context, next: Next) => {
+        return ctx.body = await userController.deleteUser(ctx.params.id);
+    });
+
     app.use(router.routes());
     app.use(router.allowedMethods());
 

@@ -1,7 +1,17 @@
 import { UserService } from "@service/UserService";
+import { User } from '@entity/User';
 
 interface greetUserPayload {
     email: string
+}
+
+interface createUserPayload {
+    values: object
+}
+
+interface updateUserPayload {
+    id: number,
+    values: object
 }
 
 export class UserController {
@@ -25,6 +35,30 @@ export class UserController {
                 message: 'No user found.'
             }
         }
+    }
+
+    // Basic calls
+
+    async getUser(id: number) {
+        return UserService.getUser(id);
+    }
+
+    async getAllUsers() {
+        return UserService.getAllUsers();
+    }
+
+    async createUser(payload: unknown): Promise<User> {
+        const data = <createUserPayload>payload;
+        return UserService.create(data.values);
+    }
+
+    async updateUser(payload: unknown): Promise<User | null> {
+        const data = <updateUserPayload>payload;
+        return await UserService.update(data.id, data.values);
+    }
+
+    async deleteUser(id: number): Promise<void> {
+        await UserService.delete(id);
     }
 
 }
