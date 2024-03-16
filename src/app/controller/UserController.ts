@@ -49,16 +49,16 @@ export class UserController {
 
     async createUser(payload: unknown): Promise<User> {
         const data = <createUserPayload>payload;
-        return UserService.create(data.values);
+        return UserService.createUser(data.values);
     }
 
     async updateUser(payload: unknown): Promise<User | null> {
         const data = <updateUserPayload>payload;
-        return await UserService.update(data.id, data.values);
+        return await UserService.updateUser(data.id, data.values);
     }
 
     async deleteUser(id: number): Promise<void> {
-        await UserService.delete(id);
+        await UserService.deleteUser(id);
     }
 
 }

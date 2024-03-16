@@ -26,19 +26,19 @@ export class UserService {
     }
 
     // Create
-    static async create(user: Partial<User>): Promise<User> {
+    static async createUser(user: Partial<User>): Promise<User> {
         const newUser = UserRepository.create(user);
         return await UserRepository.save(newUser);
     }
 
     // Update
-    static async update(id: number, user: Partial<User>): Promise<User | null> {
+    static async updateUser(id: number, user: Partial<User>): Promise<User | null> {
         await UserRepository.update(id, user);
         return UserRepository.findOne({ where: { id } });
     }
 
     // Delete
-    static async delete(id: number): Promise<void> {
+    static async deleteUser(id: number): Promise<void> {
         await UserRepository.delete(id);
     }
 
