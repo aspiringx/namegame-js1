@@ -3,8 +3,6 @@ import Koa, { Context, Next } from "koa";
 
 import { UserController } from '@controller/UserController';
 
-const userController = new UserController();
-
 export function setupRoutes(app: Koa): void {
     const router = new Router();
 
