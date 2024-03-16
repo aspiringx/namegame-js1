@@ -18,7 +18,7 @@ export class UserController {
 
     // Sample call (Step 2): Request user name / Return custom message
     // Business logic: Concatenate full name string and message
-    static async greetUser(payload: unknown) {
+    static async greetUser(payload: unknown): Promise<any>{
         const data = <greetUserPayload>payload;
         const name = await UserService.getUserName(data.email);
 
