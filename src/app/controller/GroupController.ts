@@ -25,13 +25,13 @@ export class GroupController {
         return GroupService.createGroup(data.values);
     }
 
-    static async updateGroup(payload: unknown): Promise<Group | null> {
+    static async updateGroup(groupId: number, payload: unknown): Promise<Group | null> {
         const data = <updateGroupPayload>payload;
-        return await GroupService.updateGroup(data.id, data.values);
+        return await GroupService.updateGroup(groupId, data.values);
     }
 
-    static async deleteGroup(id: number): Promise<void> {
-        await GroupService.deleteGroup(id);
+    static async deleteGroup(groupId: number): Promise<void> {
+        await GroupService.deleteGroup(groupId);
     }
 
 }
