@@ -13,7 +13,7 @@ export function setupRoutes(app: Koa): void {
         return ctx.body = await UserController.greetUser(ctx.request.body);
     });
 
-    /* User routes */
+    /* --- User routes --- */
 
     // Get user by id
     router.get('/users/:userId', async (ctx: Context, next: Next) => {
@@ -40,7 +40,7 @@ export function setupRoutes(app: Koa): void {
         return ctx.body = await UserController.deleteUser(ctx.params.userId);
     });
 
-    /* Group routes */
+    /* --- Group routes --- */
 
     // Get group by id
     router.get('/groups/:groupId', async (ctx: Context, next: Next) => {
