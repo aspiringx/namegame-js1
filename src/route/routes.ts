@@ -3,6 +3,7 @@ import Koa, { Context, Next } from "koa";
 
 import { UserController } from '@controller/UserController';
 import { GroupController } from '@controller/GroupController';
+import { GroupUserController } from '@controller/GroupUserController';
 
 export function setupRoutes(app: Koa): void {
     const router = new Router();
@@ -66,6 +67,28 @@ export function setupRoutes(app: Koa): void {
     router.delete('/groups/:groupId', async (ctx: Context, next: Next) => {
         return ctx.body = await GroupController.deleteGroup(ctx.params.groupId);
     });
+
+    /* --- Group users routes --- */
+
+    // // Get users in group by group id
+    // router.get('/group/:groupId/users', async (ctx: Context, next: Next) => {
+    //     return ctx.body = await GroupUserController.getGroupUsers(ctx.params.groupId);
+    // });
+
+    // // Add user to group
+    // router.post('/group/:groupId/user', async (ctx: Context, next: Next) => {
+    //     return ctx.body = await GroupUserController.createGroupUser(ctx.params.groupId, ctx.request.body);
+    // });
+
+    // // Update user in group
+    // router.put('/group/:groupId/users/:userId', async (ctx: Context, next: Next) => {
+    //     return ctx.body = await GroupUserController.updateGroupUser(ctx.params.groupId, ctx.params.userId, ctx.request.body);
+    // });
+
+    // // Delete user in group
+    // router.delete('/group/:groupId/users/:userId', async (ctx: Context, next: Next) => {
+    //     return ctx.body = await GroupUserController.deleteGroupUser(ctx.params.groupId, ctx.params.userId);
+    // });
 
     app.use(router.routes());
     app.use(router.allowedMethods());
