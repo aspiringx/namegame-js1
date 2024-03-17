@@ -24,8 +24,11 @@ export class Group {
     @Column({ type: 'varchar', unique: true, comment: 'URL slug for group. Default to lower-case name no spaces.' })
     slug!: string;
 
-    @Column({ type: 'varchar', nullable: true, comment: 'Group description.' })
+    @Column({ type: 'varchar', nullable: true })
     description!: string;
+
+    @Column({ type: 'varchar', nullable: true, comment: 'Group description.' })
+    mobile_phone!: string;
 
     @Column({ type: 'varchar', nullable: true, comment: 'Optional logo image URL.' })
     logo_url!: string;
