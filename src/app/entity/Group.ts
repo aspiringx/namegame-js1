@@ -41,6 +41,6 @@ export class Group {
     @UpdateDateColumn({ type: "timestamp", default: () => "CURRENT_TIMESTAMP(6)", onUpdate: "CURRENT_TIMESTAMP(6)" })
     updated_at!: Date;
 
-    @OneToMany(() => GroupUser, group_user => group_user.groups)
+    @OneToMany(() => GroupUser, group_user => group_user.group_id)
     group_users!: GroupUser[];
 }

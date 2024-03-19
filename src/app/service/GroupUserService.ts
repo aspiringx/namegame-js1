@@ -22,8 +22,8 @@ export class GroupUserService {
     }
 
     // Delete (Deletes user in group)
-    static async deleteGroupUser(id: number): Promise<void> {
-        await GroupUserRepository.delete(id);
+    static async deleteGroupUser(groupId: number, userId: number): Promise<void> {
+        await GroupUserRepository.delete({ group_id: groupId, user_id: userId });
     }
 
 }

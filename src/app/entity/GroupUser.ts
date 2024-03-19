@@ -12,18 +12,18 @@ import { User } from './User';
 import { Group } from './Group';
 
 @Entity({ name: "group_users" })
-@Index(['users', 'groups'])
+@Index(['user_id', 'group_id'])
 export class GroupUser {
     @PrimaryGeneratedColumn()
     id!: number;
 
     @ManyToOne(() => User, user => user.group_users, { nullable: false, onDelete: 'CASCADE' })
     @JoinColumn({name: 'user_id'})
-    users!: number;
+    user_id!: number;
 
     @ManyToOne(() => Group, group => group.group_users, { nullable: false })
     @JoinColumn({name: 'group_id'})
-    groups!: number;
+    group_id!: number;
 
     @Column({ type: 'varchar', nullable: true, comment: 'Role of user for permission pruposes.' })
     role!: string;
