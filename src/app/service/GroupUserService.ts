@@ -4,13 +4,13 @@ import { GroupUser } from '@entity/GroupUser';
 export class GroupUserService {
 
     // Get all group users
-    static async getGroupUsers(id: number): Promise<GroupUser[]> {
-        return await GroupUserRepository.find({ where: { id } });
+    static async getGroupUsers(groupId: number): Promise<GroupUser[]> {
+        return await GroupUserRepository.find({ where: { group_id: groupId } });
     }
 
     // Create (Add user to group)
     static async createGroupUser(groupId: number, values: Partial<GroupUser>): Promise<GroupUser> {
-        // values.group_id = groupId;
+        values.group_id = groupId;
         const newGroupUser = GroupUserRepository.create(values);
         return await GroupUserRepository.save(newGroupUser);
     }

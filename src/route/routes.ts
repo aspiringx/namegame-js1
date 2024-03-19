@@ -72,7 +72,7 @@ export function setupRoutes(app: Koa): void {
 
     // Get users in group by group id
     router.get('/group/:groupId/users', async (ctx: Context, next: Next) => {
-        return ctx.body = await GroupUserController.getGroupUsers(ctx.params.groupId);
+        return ctx.body = await GroupUserController.getGroupUsers(parseInt(ctx.params.groupId));
     });
 
     // Add user to group
