@@ -12,7 +12,7 @@ import { User } from './User';
 import { Group } from './Group';
 
 @Entity({ name: "user_connections" })
-@Index(['group_id', 'user_id', 'user_id_invitee'])
+@Index(['group_id', 'user_id', 'user_id_invitee'], { unique: true })
 export class UserConnection {
     @PrimaryGeneratedColumn()
     id!: number;
