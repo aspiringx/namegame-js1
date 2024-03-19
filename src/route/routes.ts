@@ -70,25 +70,25 @@ export function setupRoutes(app: Koa): void {
 
     /* --- Group users routes --- */
 
-    // // Get users in group by group id
-    // router.get('/group/:groupId/users', async (ctx: Context, next: Next) => {
-    //     return ctx.body = await GroupUserController.getGroupUsers(ctx.params.groupId);
-    // });
+    // Get users in group by group id
+    router.get('/group/:groupId/users', async (ctx: Context, next: Next) => {
+        return ctx.body = await GroupUserController.getGroupUsers(ctx.params.groupId);
+    });
 
-    // // Add user to group
-    // router.post('/group/:groupId/user', async (ctx: Context, next: Next) => {
-    //     return ctx.body = await GroupUserController.createGroupUser(ctx.params.groupId, ctx.request.body);
-    // });
+    // Add user to group
+    router.post('/group/:groupId/user', async (ctx: Context, next: Next) => {
+        return ctx.body = await GroupUserController.createGroupUser(ctx.params.groupId, ctx.request.body);
+    });
 
-    // // Update user in group
-    // router.put('/group/:groupId/users/:userId', async (ctx: Context, next: Next) => {
-    //     return ctx.body = await GroupUserController.updateGroupUser(ctx.params.groupId, ctx.params.userId, ctx.request.body);
-    // });
+    // Update user in group
+    router.put('/group/:groupId/user/:userId', async (ctx: Context, next: Next) => {
+        return ctx.body = await GroupUserController.updateGroupUser(parseInt(ctx.params.groupId), parseInt(ctx.params.userId), ctx.request.body);
+    });
 
-    // // Delete user in group
-    // router.delete('/group/:groupId/users/:userId', async (ctx: Context, next: Next) => {
-    //     return ctx.body = await GroupUserController.deleteGroupUser(ctx.params.groupId, ctx.params.userId);
-    // });
+    // Delete user in group
+    router.delete('/group/:groupId/user/:userId', async (ctx: Context, next: Next) => {
+        return ctx.body = await GroupUserController.deleteGroupUser(ctx.params.groupId, ctx.params.userId);
+    });
 
     app.use(router.routes());
     app.use(router.allowedMethods());

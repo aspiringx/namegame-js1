@@ -16,9 +16,9 @@ export class GroupUserService {
     }
 
     // Update (Edits user in group)
-    static async updateGroupUser(id: number, groupUser: Partial<GroupUser>): Promise<GroupUser | null> {
-        await GroupUserRepository.update(id, groupUser);
-        return GroupUserRepository.findOne({ where: { id } });
+    static async updateGroupUser(groupId: number, userId: number, values: Partial<GroupUser>): Promise<GroupUser | null> {
+        await GroupUserRepository.update({ group_id: groupId, user_id: userId }, values);
+        return GroupUserRepository.findOne({ where: { group_id: groupId, user_id: userId } });
     }
 
     // Delete (Deletes user in group)

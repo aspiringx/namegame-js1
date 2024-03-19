@@ -21,9 +21,9 @@ export class GroupUserController {
         return GroupUserService.createGroupUser(groupId, data.values);
     }
 
-    static async updateGroupUser(payload: unknown): Promise<GroupUser | null> {
+    static async updateGroupUser(groupId: number, userId: number, payload: unknown): Promise<GroupUser | null> {
         const data = <updateGroupUserPayload>payload;
-        return await GroupUserService.updateGroupUser(data.id, data.values);
+        return await GroupUserService.updateGroupUser(groupId, userId, data.values);
     }
 
     static async deleteGroupUser(groupId: number, userId: number): Promise<void> {
