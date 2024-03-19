@@ -2,28 +2,28 @@ import {
     Entity,
     PrimaryGeneratedColumn,
     Column,
-    CreateDateColumn,
-    UpdateDateColumn,
-    OneToOne,
     JoinColumn,
-    Index
+    ManyToOne,
+    Index,
+    CreateDateColumn,
+    UpdateDateColumn
 } from "typeorm";
 import { User } from './User';
 import { Group } from './Group';
 
 @Entity({ name: "group_users" })
-@Index(['user_id', 'group_id'])
+@Index(['users', 'groups'])
 export class GroupUser {
     @PrimaryGeneratedColumn()
     id!: number;
 
-    @OneToOne((type) => Group)
-    @JoinColumn({ name: 'group_id' })
-    group_id!: number;
+    @ManyToOne(() => User, user => user.group_users, { nullable: false, onDelete: 'CASCADE' })
+    @JoinColumn({name: 'user_id'})
+    users!: number;
 
-    @OneToOne((type) => User, {onDelete: "CASCADE"})
-    @JoinColumn({ name: 'user_id' })
-    user_id!: number;
+    @ManyToOne(() => Group, group => group.group_users, { nullable: false })
+    @JoinColumn({name: 'group_id'})
+    groups!: number;
 
     @Column({ type: 'varchar', nullable: true, comment: 'Role of user for permission pruposes.' })
     role!: string;

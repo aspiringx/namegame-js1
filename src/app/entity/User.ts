@@ -2,9 +2,11 @@ import {
     Entity,
     PrimaryGeneratedColumn,
     Column,
+    OneToMany,
     CreateDateColumn,
     UpdateDateColumn
-} from "typeorm"
+} from "typeorm";
+import { GroupUser } from '@entity/GroupUser';
 
 @Entity({ name: "users" })
 export class User {
@@ -41,4 +43,7 @@ export class User {
 
     @UpdateDateColumn({ type: "timestamp", default: () => "CURRENT_TIMESTAMP(6)", onUpdate: "CURRENT_TIMESTAMP(6)" })
     updated_at!: Date;
+
+    @OneToMany(() => GroupUser, group_user => group_user.users)
+    group_users!: GroupUser[];
 }
