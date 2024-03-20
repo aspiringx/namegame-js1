@@ -13,7 +13,8 @@
       "migration:generate": "npx tsx ./node_modules/typeorm/cli.js migration:generate -d ./src/db/data-source.ts",
       "migration:revert": "npx tsx ./node_modules/typeorm/cli.js migration:revert -d ./src/db/data-source.ts",
       "migration:show": "npx tsx ./node_modules/typeorm/cli.js migration:show -d ./src/db/data-source.ts",
-      "schema:sync": "npx tsx ./node_modules/typeorm/cli.js schema:sync -d ./src/db/data-source.ts"
+      "schema:sync": "npx tsx ./node_modules/typeorm/cli.js schema:sync -d ./src/db/data-source.ts",
+      "schema:seed": "npx tsx ./src/db/seeder/MainSeeder.ts"
    },
    "author": "AspiringX",
    "license": "ISC",
