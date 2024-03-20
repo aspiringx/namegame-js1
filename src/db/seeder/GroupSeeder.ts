@@ -15,9 +15,10 @@ export class groupSeeder {
 
             const groups = [];
 
-            for(let i = 0; i < 250; i++) {
+            for(let i = 0; i < 150; i++) {
                 let groupName = faker.company.name();
                 groups.push({
+                    parent_id: Math.random() < 0.33 ? faker.number.int({ min: 1, max: 150 }) : undefined,
                     name: groupName,
                     name_full: groupName + ' ' + faker.company.catchPhraseAdjective(),
                     slug: faker.lorem.slug({ min: 3, max: 5 }),
