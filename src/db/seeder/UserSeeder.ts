@@ -31,7 +31,7 @@ export class userSeeder {
 
             await UserRepository.insert(users);
 
-            console.log('Users table successfully seeded');
+            console.log('Users table successfully seeded...');
         } catch (error) {
             console.log('Error seeding users table:', error);
             throw error;

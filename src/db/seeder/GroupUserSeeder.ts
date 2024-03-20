@@ -51,7 +51,7 @@ export class groupUserSeeder {
 
             await GroupUserRepository.insert(groupUsersEntries);
 
-            console.log('Group users table successfully seeded');
+            console.log('Group users table successfully seeded...');
         } catch (error) {
             console.log('Error seeding group users table:', error);
             throw error;

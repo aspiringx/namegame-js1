@@ -29,7 +29,7 @@ export class groupSeeder {
 
             await GroupRepository.insert(groups);
 
-            console.log('Groups table successfully seeded');
+            console.log('Groups table successfully seeded...');
         } catch (error) {
             console.log('Error seeding groups table:', error);
             throw error;
