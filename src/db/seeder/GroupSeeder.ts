@@ -13,7 +13,7 @@ export class groupSeeder {
                 groups.push({
                     name: groupName,
                     name_full: groupName + ' ' + faker.company.catchPhraseAdjective(),
-                    slug: faker.lorem.slug({ min: 1, max: 4 }),
+                    slug: faker.lorem.slug({ min: 3, max: 5 }),
                     description: faker.company.catchPhrase(),
                     logo_url: faker.image.url(),
                     is_active: Math.random() < 0.5 ? true : false
