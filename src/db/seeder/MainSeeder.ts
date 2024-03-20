@@ -11,7 +11,7 @@ AppDataSource.initialize().then(async () => {
     await groupSeeder.seedGroups();
     await groupUserSeeder.seedGroupUsers();
 
-    console.log('Database successfully seeded');
+    console.log('Seeding process complete.');
     process.exit();
 
   }).catch(error => console.error('Error seeding database:', error));

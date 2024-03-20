@@ -6,6 +6,13 @@ export class groupSeeder {
     static async seedGroups() {
         try {
 
+            const groupCount = await GroupRepository.count();
+
+            if(groupCount > 0) {
+                console.log('GroupSeeder can only populate an empty table...');
+                return;
+            }
+
             const groups = [];
 
             for(let i = 0; i < 250; i++) {

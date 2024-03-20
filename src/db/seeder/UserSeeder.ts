@@ -6,6 +6,13 @@ export class userSeeder {
     static async seedUsers() {
         try {
 
+            const userCount = await UserRepository.count();
+
+            if(userCount > 0) {
+                console.log('UserSeeder can only populate an empty table...');
+                return;
+            }
+
             const users = [];
 
             for(let i = 0; i < 1000; i++) {

@@ -13,7 +13,7 @@ export class groupUserSeeder {
             const groupUserCount = await GroupUserRepository.count();
 
             if(groupUserCount > 0) {
-                console.log('GroupUserSeeder can only populate an empty table');
+                console.log('GroupUserSeeder can only populate an empty table...');
                 return;
             }
 
