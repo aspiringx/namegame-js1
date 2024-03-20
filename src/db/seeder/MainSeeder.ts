@@ -3,13 +3,13 @@ import { AppDataSource } from '../data-source';
 
 import { userSeeder } from "./UserSeeder";
 import { groupSeeder } from "./GroupSeeder";
+import { groupUserSeeder } from "./GroupUserSeeder";
 
 AppDataSource.initialize().then(async () => {
 
-    await Promise.all([
-        userSeeder.seedUsers(),
-        groupSeeder.seedGroups()
-    ]);
+    await userSeeder.seedUsers();
+    await groupSeeder.seedGroups();
+    await groupUserSeeder.seedGroupUsers();
 
     console.log('Database successfully seeded');
     process.exit();
