@@ -5,7 +5,10 @@ export class GroupUserService {
 
     // Get all group users
     static async getGroupUsers(groupId: number): Promise<GroupUser[]> {
-        return await GroupUserRepository.find({ where: { group_id: groupId } });
+        return await GroupUserRepository.createQueryBuilder('group_users')
+        .select(['*'])
+        .where({ group_id: groupId })
+        .execute();
     }
 
     // Create (Add user to group)
