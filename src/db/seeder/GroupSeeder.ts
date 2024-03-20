@@ -8,7 +8,7 @@ export class groupSeeder {
 
             const groups = [];
 
-            for(let i = 0; i < 100; i++) {
+            for(let i = 0; i < 250; i++) {
                 let groupName = faker.company.name();
                 groups.push({
                     name: groupName,
