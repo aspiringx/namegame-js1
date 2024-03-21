@@ -24,7 +24,7 @@ export class groupUserSeeder {
                 return;
             }
 
-            const entries = this.createSeedEntries(1000);
+            const entries = this.createSeedEntries(10000);
 
             await GroupUserRepository.insert(await entries);
 
