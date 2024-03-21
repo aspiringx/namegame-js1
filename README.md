@@ -27,6 +27,9 @@
 		- Groups - 150 rows and some with a parent_id pointing to another group.
 		- GroupUsers - ~10k rows linked to existing users / groups.
 
+## API Documentation
+[Postman Public Collection](https://www.postman.com/igdev25/workspace/namegame-js1/collection/32355234-d2081825-2bb1-4031-b8b2-ce2181fd95a2?action=share&creator=32355234)
+
 ## TODO
 The app is stable for branching as of commit [00844a1](https://github.com/aspiringx/namegame-js1/commit/00844a1874a5214f99d8dfa27f00e4cfdf379a3b) - The following list are the planned tasks to make the app production ready:
 - API call response structure.
