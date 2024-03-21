@@ -13,7 +13,16 @@ export class userSeeder {
                 return;
             }
 
-            const users = [];
+            const users = [{
+                    first_name: 'Sample',
+                    last_name: 'User',
+                    email: 'sample-user@aspiringx.com',
+                    email_verified_at: Math.random() < 0.5 ? 'null' : faker.date.recent({ days: 365 }),
+                    photo_url: faker.image.url(),
+                    mobile_phone: faker.string.octal({ prefix: '+1', length: 10 }),
+                    mobile_phone_verified_at: Math.random() < 0.5 ? 'null' : faker.date.recent({ days: 365 }),
+                    mobile_phone_carrier: 'Verizon'
+            }];
 
             for(let i = 0; i < 1000; i++) {
                 let verifiedDate = faker.date.recent({ days: 365 });
