@@ -24,13 +24,11 @@
 		- GroupUsers - ~10k rows linked to existing users / groups.
 
 ## TODO
-
 The app is stable for branching as of commit [00844a1](https://github.com/aspiringx/namegame-js1/commit/00844a1874a5214f99d8dfa27f00e4cfdf379a3b) - The following list are the planned tasks to make the app production ready:
-
-<input type="checkbox" disabled />API call response structure.
-<input type="checkbox" disabled />Error handling policy between controller, service and repository layers.
-<input type="checkbox" disabled />Secure app via auth protocol (JWT maybe).
-<input type="checkbox" disabled />Integrate the GraphQL API query layer into the app flow.
-<input type="checkbox" disabled />Unit testing.
-<input type="checkbox" disabled />Create additional API endpoints once app functionality is better defined.
-<input type="checkbox" disabled />Containerize application to mainstream environment compatibility.
+- API call response structure.
+- Error handling policy between controller, service and repository layers.
+- Secure app via auth protocol (JWT maybe).
+- Integrate the GraphQL API query layer into the app flow.
+- Unit testing.
+- Create additional API endpoints once app functionality is better defined.
+- Containerize application to mainstream environment compatibility.
