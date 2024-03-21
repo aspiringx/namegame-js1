@@ -1,5 +1,4 @@
-### Quick start
------
+## Quick start
 1. Clone repo `git clone https://github.com/aspiringx/namegame-js1.git`
 2. Run `npm install`
 3. Copy `.env.example` as `.env` and populate the database environmental variables.
@@ -12,22 +11,19 @@
 	  - `npm run schema:seed` will populate the `users`, `groups` and `group_users` tables.
 5. Run `npm run watch` to start server in hot reload dev mode.
 
-### DB: Schema
----
+## DB: Schema
 - To build the database schema use the command `npm run migration:run`
 - To rebuild the database in case of an entity / schema problem use:
 	- `npm run schema:drop` followed by `npm run migration:run`
 
-### DB: Seeding
----
+## DB: Seeding
 - To populate the database the command `npm run schema:seed`
 	- ***NOTE: Seeder will populate the following tables only if currently empty***
 		- Users - 1000 rows with random null email and phone verification dates.
 		- Groups - 150 rows and some with a parent_id pointing to another group.
 		- GroupUsers - ~10k rows linked to existing users / groups.
 
-### TODO
----
+## TODO
 The app is stable for branching as of commit [00844a1](https://github.com/aspiringx/namegame-js1/commit/00844a1874a5214f99d8dfa27f00e4cfdf379a3b) - The following list are the planned tasks to make the app production ready:
 <input type="checkbox" disabled />API call response structure.
 <input type="checkbox" disabled />Error handling policy between controller, service and repository layers.
