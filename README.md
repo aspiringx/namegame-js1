@@ -1,3 +1,6 @@
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://github.com/aspiringx/namegame-js1/assets/11307718/e12fe9a8-b8cc-408e-923b-799168fc71a3" width="250" alt="NameGame Logo"></a></p>
+<p align="center">Node • TypeOrm • Koa • GraphQL • TypeScript</p>
+
 ## Quick start
 1. Clone repo `git clone https://github.com/aspiringx/namegame-js1.git`
 2. Run `npm install`
@@ -5,6 +8,7 @@
 	  ***NOTE: Node server defaults to port 3000. MYSQL_PORT defaults to 3306.***
 4. ***(Optional)*** To build and populate a working development database use the following.
 	  *From the project root folder*
+
 	  - `docker compose -f ./docker-mysql-dev.yaml up -d`
 	  ***NOTE:*** This creates a simple mysql container with the `MYSQL_` `.env` variable values.
 	  - `npm run migration:run` will build out the database schema.
