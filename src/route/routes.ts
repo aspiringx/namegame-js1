@@ -10,7 +10,7 @@ export function setupRoutes(app: Koa): void {
 
     // Sample Call (Step 1): POST call to Controller
     // App flow demo: Router -> Controller -> Service -> Repository -> Entity
-    router.post('/users/greet', async (ctx: Context, next: Next) => {
+    router.post('/user/greet', async (ctx: Context, next: Next) => {
         return ctx.body = await UserController.greetUser(ctx.request.body);
     });
 
