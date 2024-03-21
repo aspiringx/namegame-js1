@@ -17,7 +17,7 @@ export function setupRoutes(app: Koa): void {
     /* --- User routes --- */
 
     // Get user by id
-    router.get('/users/:userId', async (ctx: Context, next: Next) => {
+    router.get('/user/:userId', async (ctx: Context, next: Next) => {
         return ctx.body = await UserController.getUser(ctx.params.userId);
     });
 
@@ -27,24 +27,24 @@ export function setupRoutes(app: Koa): void {
     });
 
     // Create user
-    router.post('/users/create', async (ctx: Context, next: Next) => {
+    router.post('/user/create', async (ctx: Context, next: Next) => {
         return ctx.body = await UserController.createUser(ctx.request.body);
     });
 
     // Update user
-    router.put('/users/:userId', async (ctx: Context, next: Next) => {
+    router.put('/user/:userId', async (ctx: Context, next: Next) => {
         return ctx.body = await UserController.updateUser(ctx.params.userId, ctx.request.body);
     });
 
     // Delete user
-    router.delete('/users/:userId', async (ctx: Context, next: Next) => {
+    router.delete('/user/:userId', async (ctx: Context, next: Next) => {
         return ctx.body = await UserController.deleteUser(ctx.params.userId);
     });
 
     /* --- Group routes --- */
 
     // Get group by id
-    router.get('/groups/:groupId', async (ctx: Context, next: Next) => {
+    router.get('/group/:groupId', async (ctx: Context, next: Next) => {
         return ctx.body = await GroupController.getGroup(ctx.params.groupId);
     });
 
@@ -54,17 +54,17 @@ export function setupRoutes(app: Koa): void {
     });
 
     // Create group
-    router.post('/groups/create', async (ctx: Context, next: Next) => {
+    router.post('/group/create', async (ctx: Context, next: Next) => {
         return ctx.body = await GroupController.createGroup(ctx.request.body);
     });
 
     // Update group
-    router.put('/groups/:groupId', async (ctx: Context, next: Next) => {
+    router.put('/group/:groupId', async (ctx: Context, next: Next) => {
         return ctx.body = await GroupController.updateGroup(ctx.params.groupId, ctx.request.body);
     });
 
     // Delete group
-    router.delete('/groups/:groupId', async (ctx: Context, next: Next) => {
+    router.delete('/group/:groupId', async (ctx: Context, next: Next) => {
         return ctx.body = await GroupController.deleteGroup(ctx.params.groupId);
     });
 
