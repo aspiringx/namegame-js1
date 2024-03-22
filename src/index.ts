@@ -3,7 +3,7 @@ import Koa from 'koa';
 import koaJson from 'koa-json';
 import koaLogger from 'koa-logger';
 import bodyParser from 'koa-bodyparser';
-import { setupRoutes } from './route/routes';
+import { restRoutes } from './route/rest-routes';
 
 import "reflect-metadata";
 import { AppDataSource } from "./db/data-source";
@@ -20,7 +20,7 @@ AppDataSource.initialize().then(async () => {
   app.use(bodyParser());
 
   // Routes
-  setupRoutes(app);
+  restRoutes(app);
 
   return app.listen(port, () => {
     console.log(`Server is running on port ${port}`);

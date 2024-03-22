@@ -5,7 +5,7 @@ import { UserController } from '@controller/UserController';
 import { GroupController } from '@controller/GroupController';
 import { GroupUserController } from '@controller/GroupUserController';
 
-export function setupRoutes(app: Koa): void {
+export function restRoutes(app: Koa): void {
     const router = new Router();
 
     // Sample Call (Step 1): POST call to Controller
