@@ -1,5 +1,5 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://github.com/aspiringx/namegame-js1/assets/11307718/e12fe9a8-b8cc-408e-923b-799168fc71a3" width="250" alt="NameGame Logo"></a></p>
-<p align="center">Node • TypeOrm • Koa • GraphQL • TypeScript</p>
+<p align="center">Node • TypeOrm • Koa • REST • TypeScript</p>
 
 ## Quick start
 1. Clone repo `git clone https://github.com/aspiringx/namegame-js1.git`
@@ -35,7 +35,6 @@ The app is stable for branching as of commit [00844a1](https://github.com/aspiri
 - API call response structure.
 - Error handling policy between controller, service and repository layers.
 - Secure app via auth protocol (JWT maybe).
-- Integrate the GraphQL API query layer into the app flow.
 - Unit testing.
 - Create additional API endpoints once app functionality is better defined.
 - Containerize application to mainstream environment compatibility.
