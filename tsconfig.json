@@ -16,7 +16,9 @@
          "@repository/*": ["app/repository/*"],
          "@service/*":    ["app/service/*"],
          "@migration/*":  ["db/migration/*"],
-         "@seeder/*":     ["db/seeder/*"]
+         "@seeder/*":     ["db/seeder/*"],
+         "@schema/*":     ["app/graphql/schema/*"],
+         "@resolver/*":   ["app/graphql/resolver/*"]
       },
       "outDir": "./build",
       "rootDir": "./src",
