@@ -1,5 +1,5 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://github.com/aspiringx/namegame-js1/assets/11307718/e12fe9a8-b8cc-408e-923b-799168fc71a3" width="250" alt="NameGame Logo"></a></p>
-<p align="center">Node • TypeOrm • Koa • REST • TypeScript</p>
+<p align="center">Node • TypeOrm • Koa • REST • GraphQL • TypeScript</p>
 
 ## Quick start
 1. Clone repo `git clone https://github.com/aspiringx/namegame-js1.git`
@@ -30,11 +30,26 @@
 ## API Documentation
 [Postman Public Collection](https://www.postman.com/igdev25/workspace/namegame-js1/collection/32355234-d2081825-2bb1-4031-b8b2-ce2181fd95a2?action=share&creator=32355234)
 
+## GraphQL
+The app is set up to use Apollo Server by accessing `localhost:3000/graphql`
+```
+// There is currently basic schemas to fetch all user and group data with more on the way.
+// Query example *(Fields available are based on table schema)
+
+  query {
+    users {
+      first_name
+      last_name
+    } 
+  }
+```
+
 ## TODO
 The app is stable for branching as of commit [00844a1](https://github.com/aspiringx/namegame-js1/commit/00844a1874a5214f99d8dfa27f00e4cfdf379a3b) - The following list are the planned tasks to make the app production ready:
 - API call response structure.
 - Error handling policy between controller, service and repository layers.
-- Secure app via auth protocol (JWT maybe).
+- Secure app via auth protocol (likely JWT).
 - Unit testing.
 - Create additional API endpoints once app functionality is better defined.
 - Containerize application to mainstream environment compatibility.
+- Turn off Apollo Server sandbox access for production.
