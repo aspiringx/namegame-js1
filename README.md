@@ -46,10 +46,11 @@ The app is set up to use Apollo Server by accessing `localhost:3000/graphql`
 
 ## TODO
 The app is stable for branching as of commit [00844a1](https://github.com/aspiringx/namegame-js1/commit/00844a1874a5214f99d8dfa27f00e4cfdf379a3b) - The following list are the planned tasks to make the app production ready:
-- API call response structure.
+- API call response structure. (This should be uniform with both REST and GraphQL responses.)
 - Error handling policy between controller, service and repository layers.
 - Secure app via auth protocol (likely JWT).
 - Unit testing.
 - Create additional API endpoints once app functionality is better defined.
+- Create additional GraphQL endpoints taking into account Entity relations.
 - Containerize application to mainstream environment compatibility.
 - Turn off Apollo Server sandbox access for production.
