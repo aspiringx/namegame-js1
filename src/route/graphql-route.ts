@@ -4,33 +4,8 @@ import Koa, { Context, Next } from "koa";
 import { ApolloServer } from "@apollo/server";
 import { koaMiddleware } from "@as-integrations/koa";
 
-const typeDefs = `#graphql
-  type Book {
-    title: String
-    author: String
-  }
-
-  type Query {
-    books: [Book]
-  }
-`;
-
-const books = [
-  {
-    title: 'The Awakening',
-    author: 'Kate Chopin',
-  },
-  {
-    title: 'City of Glass',
-    author: 'Paul Auster',
-  },
-];
-
-const resolvers = {
-  Query: {
-    books: () => books,
-  }
-}
+import typeDefs from "@schema/MainSchema";
+import { resolvers } from "@resolver/MainResolver";
 
 export async function graphqlRoute(app: Koa): Promise<void> {
 
