@@ -3,6 +3,8 @@ import { resolvers } from "@resolver/MainResolver";
 import { UserType } from "@schema/UserType";
 import { GroupType } from "@schema/GroupType";
 
+// Main schema hub
+// Note: Alternatively schemas could be defined in TypeORM entities with TypeGraphQL
 const QueryType = new GraphQLObjectType({
   name: 'Query',
   fields: {
