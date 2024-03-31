@@ -9,7 +9,7 @@ import {
     Index
 } from "typeorm";
 import { UserEntity } from '@entity/UserEntity';
-import { Group } from '@entity/Group';
+import { GroupEntity } from '@entity/GroupEntity';
 
 @Entity({ name: "user_connections" })
 @Index(['group_id', 'user_id', 'user_id_invitee'], { unique: true })
@@ -28,7 +28,7 @@ export class UserConnection {
     user_id_invitee!: number;
 
     // Column comment: ID of group in which users are connected.
-    @OneToOne((type) => Group)
+    @OneToOne((type) => GroupEntity)
     @JoinColumn({ name: 'group_id' })
     group_id!: number;
 

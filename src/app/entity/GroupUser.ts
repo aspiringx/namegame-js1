@@ -9,7 +9,7 @@ import {
     UpdateDateColumn
 } from "typeorm";
 import { UserEntity } from '@entity/UserEntity';
-import { Group } from '@entity/Group';
+import { GroupEntity } from '@entity/GroupEntity';
 
 @Entity({ name: "group_users" })
 @Index(['user_id', 'group_id'], { unique: true })
@@ -21,7 +21,7 @@ export class GroupUser {
     @JoinColumn({name: 'user_id'})
     user_id!: number;
 
-    @ManyToOne(() => Group, group => group.group_users, { nullable: false })
+    @ManyToOne(() => GroupEntity, group => group.group_users, { nullable: false })
     @JoinColumn({name: 'group_id'})
     group_id!: number;
 

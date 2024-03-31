@@ -8,8 +8,19 @@ import {
 } from "typeorm";
 import { GroupUser } from "@entity/GroupUser";
 
+interface Group {
+    id: number;
+    parent_id: number;
+    name: string;
+    name_full: string;
+    slug: string;
+    description: string;
+    logo_url: string;
+    is_active: boolean;
+}
+
 @Entity({ name: "groups" })
-export class Group {
+export class GroupEntity implements Group {
 
     @PrimaryGeneratedColumn()
     id!: number;

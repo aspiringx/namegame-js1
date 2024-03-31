@@ -1,5 +1,5 @@
 import { GroupService } from "@service/GroupService";
-import { Group } from '@entity/Group';
+import { GroupEntity } from '@entity/GroupEntity';
 
 interface createGroupPayload {
     values: object
@@ -20,12 +20,12 @@ export class GroupController {
         return GroupService.getAllGroups();
     }
 
-    static async createGroup(payload: unknown): Promise<Group> {
+    static async createGroup(payload: unknown): Promise<GroupEntity> {
         const data = <createGroupPayload>payload;
         return GroupService.createGroup(data.values);
     }
 
-    static async updateGroup(groupId: number, payload: unknown): Promise<Group | null> {
+    static async updateGroup(groupId: number, payload: unknown): Promise<GroupEntity | null> {
         const data = <updateGroupPayload>payload;
         return await GroupService.updateGroup(groupId, data.values);
     }
