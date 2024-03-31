@@ -6,8 +6,16 @@ import {
     UpdateDateColumn
  } from "typeorm";
 
+ interface QrCode {
+    id: number;
+    code: string;
+    group_id: number;
+    user_id: number;
+    expires_at: Date;
+ }
+
 @Entity({ name: "qr_codes" })
-export class QrCode {
+export class QrCodeEntity implements QrCode {
     @PrimaryGeneratedColumn()
     id!: number;
 
