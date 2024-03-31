@@ -8,8 +8,8 @@ import {
     CreateDateColumn,
     UpdateDateColumn
 } from "typeorm";
-import { User } from './User';
-import { Group } from './Group';
+import { UserEntity } from '@entity/UserEntity';
+import { Group } from '@entity/Group';
 
 @Entity({ name: "group_users" })
 @Index(['user_id', 'group_id'], { unique: true })
@@ -17,7 +17,7 @@ export class GroupUser {
     @PrimaryGeneratedColumn()
     id!: number;
 
-    @ManyToOne(() => User, user => user.group_users, { nullable: false, onDelete: 'CASCADE' })
+    @ManyToOne(() => UserEntity, user => user.group_users, { nullable: false, onDelete: 'CASCADE' })
     @JoinColumn({name: 'user_id'})
     user_id!: number;
 

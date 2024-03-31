@@ -8,8 +8,8 @@ import {
     JoinColumn,
     Index
 } from "typeorm";
-import { User } from './User';
-import { Group } from './Group';
+import { UserEntity } from '@entity/UserEntity';
+import { Group } from '@entity/Group';
 
 @Entity({ name: "user_connections" })
 @Index(['group_id', 'user_id', 'user_id_invitee'], { unique: true })
@@ -18,12 +18,12 @@ export class UserConnection {
     id!: number;
 
     // Column comment: ID of the user that was the inviter.
-    @OneToOne((type) => User, {onDelete: "CASCADE"})
+    @OneToOne((type) => UserEntity, {onDelete: "CASCADE"})
     @JoinColumn({ name: 'user_id' })
     user_id!: number;
 
     // Column comment: ID of the user that was invited.
-    @OneToOne((type) => User, {onDelete: "CASCADE"})
+    @OneToOne((type) => UserEntity, {onDelete: "CASCADE"})
     @JoinColumn({ name: 'user_id_invitee' })
     user_id_invitee!: number;
 

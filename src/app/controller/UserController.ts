@@ -1,5 +1,5 @@
 import { UserService } from "@service/UserService";
-import { User } from '@entity/User';
+import { UserEntity } from '@entity/UserEntity';
 
 interface greetUserPayload {
     email: string
@@ -47,12 +47,12 @@ export class UserController {
         return UserService.getAllUsers();
     }
 
-    static async createUser(payload: unknown): Promise<User> {
+    static async createUser(payload: unknown): Promise<UserEntity> {
         const data = <createUserPayload>payload;
         return UserService.createUser(data.values);
     }
 
-    static async updateUser(userId: number, payload: unknown): Promise<User | null> {
+    static async updateUser(userId: number, payload: unknown): Promise<UserEntity | null> {
         const data = <updateUserPayload>payload;
         return await UserService.updateUser(userId, data.values);
     }
