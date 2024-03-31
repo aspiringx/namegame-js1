@@ -6,7 +6,7 @@ import {
     CreateDateColumn,
     UpdateDateColumn
 } from "typeorm";
-import { GroupUser } from "@entity/GroupUser";
+import { GroupUserEntity } from "@entity/GroupUserEntity";
 
 interface Group {
     id: number;
@@ -52,6 +52,6 @@ export class GroupEntity implements Group {
     @UpdateDateColumn({ type: "timestamp", default: () => "CURRENT_TIMESTAMP(6)", onUpdate: "CURRENT_TIMESTAMP(6)" })
     updated_at!: Date;
 
-    @OneToMany(() => GroupUser, group_user => group_user.group_id)
-    group_users!: GroupUser[];
+    @OneToMany(() => GroupUserEntity, group_user => group_user.group_id)
+    group_users!: GroupUserEntity[];
 }

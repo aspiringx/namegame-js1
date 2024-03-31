@@ -11,9 +11,20 @@ import {
 import { UserEntity } from '@entity/UserEntity';
 import { GroupEntity } from '@entity/GroupEntity';
 
+interface GroupUser {
+    id: number;
+    user_id: number;
+    group_id: number;
+    role: string;
+    title: string;
+    member_since: Date;
+    is_leader: boolean;
+    is_active: boolean;
+}
+
 @Entity({ name: "group_users" })
 @Index(['user_id', 'group_id'], { unique: true })
-export class GroupUser {
+export class GroupUserEntity implements GroupUser {
     @PrimaryGeneratedColumn()
     id!: number;
 
