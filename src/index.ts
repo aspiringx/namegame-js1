@@ -12,20 +12,20 @@ import { AppDataSource } from "./db/data-source";
 
 AppDataSource.initialize().then(async () => {
 
-  const app = new Koa();
+    const app = new Koa();
 
-  const port: number = Number(process.env.APP_PORT) || 3000;
+    const port: number = Number(process.env.APP_PORT) || 3000;
 
-  // Allow parsing request body in routes
-  app.use(koaJson());
-  app.use(koaLogger());
-  app.use(bodyParser());
+    // Allow parsing request body in routes
+    app.use(koaJson());
+    app.use(koaLogger());
+    app.use(bodyParser());
 
-  // Routes
-  restRoutes(app);
-  graphqlRoute(app);
+    // Routes
+    restRoutes(app);
+    graphqlRoute(app);
 
-  return app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
-  });
+    return app.listen(port, () => {
+        console.log(`Server is running on port ${port}`);
+    });
 }).catch(error => console.log(error));
