@@ -17,6 +17,7 @@
          "@entity/*":     ["app/entity/*"],
          "@repository/*": ["app/repository/*"],
          "@service/*":    ["app/service/*"],
+         "@middleware/*": ["app/middleware/*"],
          "@migration/*":  ["db/migration/*"],
          "@seeder/*":     ["db/seeder/*"],
          "@schema/*":     ["app/graphql/schema/*"],
