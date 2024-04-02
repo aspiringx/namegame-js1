@@ -9,5 +9,9 @@ export async function uncaughtErrorHandler(ctx: Context, next: Next) {
         ctx.body = {
             message: 'sql' in err ? err.code : err.message
         };
+
+        if(process.env.NODE_ENV === 'dev') {
+            console.log(err);
+        }
     }
 }
