@@ -8,27 +8,35 @@ import {
     JoinColumn,
     Index
 } from "typeorm";
-import { User } from './User';
-import { Group } from './Group';
+import { UserEntity } from '@entity/UserEntity';
+import { GroupEntity } from '@entity/GroupEntity';
+
+interface UserConnection {
+    id: number;
+    user_id: number;
+    user_id_invitee: number;
+    group_id: number;
+    relationship: string;
+}
 
 @Entity({ name: "user_connections" })
 @Index(['group_id', 'user_id', 'user_id_invitee'], { unique: true })
-export class UserConnection {
+export class UserConnectionEntity implements UserConnection {
     @PrimaryGeneratedColumn()
     id!: number;
 
     // Column comment: ID of the user that was the inviter.
-    @OneToOne((type) => User, {onDelete: "CASCADE"})
+    @OneToOne((type) => UserEntity, {onDelete: "CASCADE"})
     @JoinColumn({ name: 'user_id' })
     user_id!: number;
 
     // Column comment: ID of the user that was invited.
-    @OneToOne((type) => User, {onDelete: "CASCADE"})
+    @OneToOne((type) => UserEntity, {onDelete: "CASCADE"})
     @JoinColumn({ name: 'user_id_invitee' })
     user_id_invitee!: number;
 
     // Column comment: ID of group in which users are connected.
-    @OneToOne((type) => Group)
+    @OneToOne((type) => GroupEntity)
     @JoinColumn({ name: 'group_id' })
     group_id!: number;
 

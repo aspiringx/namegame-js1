@@ -1,5 +1,5 @@
 import { UserRepository } from "@repository/UserRepository";
-import { User } from '@entity/User';
+import { UserEntity } from '@entity/UserEntity';
 
 export class UserService {
 
@@ -16,23 +16,23 @@ export class UserService {
     }
 
     // Get user by id
-    static async getUser(id: number): Promise<User | null> {
+    static async getUser(id: number): Promise<UserEntity | null> {
         return await UserRepository.findOne({ where: { id } });
     }
 
     // Get all users
-    static async getAllUsers(): Promise<User[]> {
+    static async getAllUsers(): Promise<UserEntity[]> {
         return await UserRepository.find();
     }
 
     // Create
-    static async createUser(user: Partial<User>): Promise<User> {
+    static async createUser(user: Partial<UserEntity>): Promise<UserEntity> {
         const newUser = UserRepository.create(user);
         return await UserRepository.save(newUser);
     }
 
     // Update
-    static async updateUser(id: number, user: Partial<User>): Promise<User | null> {
+    static async updateUser(id: number, user: Partial<UserEntity>): Promise<UserEntity | null> {
         await UserRepository.update(id, user);
         return UserRepository.findOne({ where: { id } });
     }

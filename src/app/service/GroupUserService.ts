@@ -1,10 +1,10 @@
 import { GroupUserRepository } from "@repository/GroupUserRepository";
-import { GroupUser } from '@entity/GroupUser';
+import { GroupUserEntity } from '@entity/GroupUserEntity';
 
 export class GroupUserService {
 
     // Get all group users
-    static async getGroupUsers(groupId: number): Promise<GroupUser[]> {
+    static async getGroupUsers(groupId: number): Promise<GroupUserEntity[]> {
         return await GroupUserRepository.createQueryBuilder('group_users')
         .select(['*'])
         .where({ group_id: groupId })
@@ -12,14 +12,14 @@ export class GroupUserService {
     }
 
     // Create (Add user to group)
-    static async createGroupUser(groupId: number, values: Partial<GroupUser>): Promise<GroupUser> {
+    static async createGroupUser(groupId: number, values: Partial<GroupUserEntity>): Promise<GroupUserEntity> {
         values.group_id = groupId;
         const newGroupUser = GroupUserRepository.create(values);
         return await GroupUserRepository.save(newGroupUser);
     }
 
     // Update (Edits user in group)
-    static async updateGroupUser(groupId: number, userId: number, values: Partial<GroupUser>): Promise<GroupUser | null> {
+    static async updateGroupUser(groupId: number, userId: number, values: Partial<GroupUserEntity>): Promise<GroupUserEntity | null> {
         await GroupUserRepository.update({ group_id: groupId, user_id: userId }, values);
         return GroupUserRepository.findOne({ where: { group_id: groupId, user_id: userId } });
     }

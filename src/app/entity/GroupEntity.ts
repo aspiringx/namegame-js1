@@ -6,10 +6,21 @@ import {
     CreateDateColumn,
     UpdateDateColumn
 } from "typeorm";
-import { GroupUser } from "@entity/GroupUser";
+import { GroupUserEntity } from "@entity/GroupUserEntity";
+
+interface Group {
+    id: number;
+    parent_id: number;
+    name: string;
+    name_full: string;
+    slug: string;
+    description: string;
+    logo_url: string;
+    is_active: boolean;
+}
 
 @Entity({ name: "groups" })
-export class Group {
+export class GroupEntity implements Group {
 
     @PrimaryGeneratedColumn()
     id!: number;
@@ -41,6 +52,6 @@ export class Group {
     @UpdateDateColumn({ type: "timestamp", default: () => "CURRENT_TIMESTAMP(6)", onUpdate: "CURRENT_TIMESTAMP(6)" })
     updated_at!: Date;
 
-    @OneToMany(() => GroupUser, group_user => group_user.group_id)
-    group_users!: GroupUser[];
+    @OneToMany(() => GroupUserEntity, group_user => group_user.group_id)
+    group_users!: GroupUserEntity[];
 }

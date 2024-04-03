@@ -8,20 +8,31 @@ import {
     CreateDateColumn,
     UpdateDateColumn
 } from "typeorm";
-import { User } from './User';
-import { Group } from './Group';
+import { UserEntity } from '@entity/UserEntity';
+import { GroupEntity } from '@entity/GroupEntity';
+
+interface GroupUser {
+    id: number;
+    user_id: number;
+    group_id: number;
+    role: string;
+    title: string;
+    member_since: Date;
+    is_leader: boolean;
+    is_active: boolean;
+}
 
 @Entity({ name: "group_users" })
 @Index(['user_id', 'group_id'], { unique: true })
-export class GroupUser {
+export class GroupUserEntity implements GroupUser {
     @PrimaryGeneratedColumn()
     id!: number;
 
-    @ManyToOne(() => User, user => user.group_users, { nullable: false, onDelete: 'CASCADE' })
+    @ManyToOne(() => UserEntity, user => user.group_users, { nullable: false, onDelete: 'CASCADE' })
     @JoinColumn({name: 'user_id'})
     user_id!: number;
 
-    @ManyToOne(() => Group, group => group.group_users, { nullable: false })
+    @ManyToOne(() => GroupEntity, group => group.group_users, { nullable: false })
     @JoinColumn({name: 'group_id'})
     group_id!: number;
 

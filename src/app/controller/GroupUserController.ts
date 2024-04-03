@@ -1,5 +1,5 @@
 import { GroupUserService } from "@service/GroupUserService";
-import { GroupUser } from '@entity/GroupUser';
+import { GroupUserEntity } from '@entity/GroupUserEntity';
 
 interface createGroupUserPayload {
     values: object
@@ -16,12 +16,12 @@ export class GroupUserController {
         return GroupUserService.getGroupUsers(group_id);
     }
 
-    static async createGroupUser(groupId: number, payload: unknown): Promise<GroupUser> {
+    static async createGroupUser(groupId: number, payload: unknown): Promise<GroupUserEntity> {
         const data = <createGroupUserPayload>payload;
         return GroupUserService.createGroupUser(groupId, data.values);
     }
 
-    static async updateGroupUser(groupId: number, userId: number, payload: unknown): Promise<GroupUser | null> {
+    static async updateGroupUser(groupId: number, userId: number, payload: unknown): Promise<GroupUserEntity | null> {
         const data = <updateGroupUserPayload>payload;
         return await GroupUserService.updateGroupUser(groupId, userId, data.values);
     }

@@ -1,7 +1,7 @@
 import { AppDataSource } from "../../db/data-source";
-import { GroupUser } from '@entity/GroupUser';
+import { GroupUserEntity } from '@entity/GroupUserEntity';
 
-export const GroupUserRepository = AppDataSource.getRepository(GroupUser).extend({
+export const GroupUserRepository = AppDataSource.getRepository(GroupUserEntity).extend({
 
 
 
