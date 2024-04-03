@@ -18,7 +18,7 @@ export function restRoutes(app: Koa): void {
 
     // Get user by id
     router.get('/user/:userId', async (ctx: Context) => {
-        return ctx.body = await UserController.getUser(ctx);
+        return ctx.body = await UserController.getUser(ctx.params.userId);
     });
 
     // Get all users
