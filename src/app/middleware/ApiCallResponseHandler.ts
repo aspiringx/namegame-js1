@@ -101,7 +101,7 @@ class responseFormatHandler {
         if('affected' in fnReturn) {
             count = fnReturn.affected as number | null;
         }
-        // count = null;
+
         this.messages = {
             success: 'Resource deletion successful.',
             fail: count === null ? 'Resource deletion failed.' : 'No resource found to delete.'
