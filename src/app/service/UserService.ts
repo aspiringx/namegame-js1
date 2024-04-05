@@ -1,5 +1,6 @@
 import { UserRepository } from "@repository/UserRepository";
 import { UserEntity } from '@entity/UserEntity';
+import { DeleteResult } from "typeorm";
 
 export class UserService {
 
@@ -38,8 +39,8 @@ export class UserService {
     }
 
     // Delete
-    static async deleteUser(id: number): Promise<void> {
-        await UserRepository.delete(id);
+    static async deleteUser(id: number): Promise<DeleteResult> {
+        return await UserRepository.delete(id);
     }
 
 }
