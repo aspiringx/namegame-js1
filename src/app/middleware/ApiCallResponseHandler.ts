@@ -38,6 +38,7 @@ class responseFormatHandler {
         if(count) {
             return { message: this.messages.success};
         } else {
+            ctx.status = 404;
             return { message: this.messages.fail};
         }
     }
