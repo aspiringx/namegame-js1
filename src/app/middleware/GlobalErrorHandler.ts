@@ -11,7 +11,7 @@ export async function globalErrorHandler(ctx: Context, next: Next) {
         ctx.status = err.statusCode || err.status || 500;
         ctx.body = {
             // Returning abstract SQL errors to avoid exposing schema structure
-            message: 'sql' in err ? err.code + ' [' + err.errno + ']' : err.message
+            message: 'sql' in err ? 'SQL ERRNO ' + '[' + err.errno + ']: ' + err.code : err.message
         };
 
         if(process.env.NODE_ENV === 'dev') {
