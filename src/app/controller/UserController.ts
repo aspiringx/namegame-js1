@@ -28,16 +28,14 @@ export class UserController {
 
         if(name) {
             return {
-                status: 'success',
-                data: {greeting: 'Welcome to the website ' + name + '.'},
-                message: 'Successfully created user greeting.'
+                message: 'User greeting created.',
+                greeting: 'Welcome to the website ' + name + '.'
             }
         } else {
             ctx.status = 404;
             return {
-                status: 'error',
-                data: null,
-                message: 'No user found to greet.'
+                message: 'No user found to greet.',
+                data: null
             }
         }
     }
