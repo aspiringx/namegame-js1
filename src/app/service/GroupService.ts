@@ -1,5 +1,6 @@
 import { GroupRepository } from "@repository/GroupRepository";
 import { GroupEntity } from '@entity/GroupEntity';
+import { DeleteResult } from "typeorm";
 
 export class GroupService {
 
@@ -26,8 +27,8 @@ export class GroupService {
     }
 
     // Delete
-    static async deleteGroup(id: number): Promise<void> {
-        await GroupRepository.delete(id);
+    static async deleteGroup(id: number): Promise<DeleteResult> {
+        return await GroupRepository.delete(id);
     }
 
 }

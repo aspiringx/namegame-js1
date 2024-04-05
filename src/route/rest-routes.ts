@@ -45,27 +45,27 @@ export function restRoutes(app: Koa): void {
 
     // Get group by id
     router.get('/group/:groupId', async (ctx: Context, next: Next) => {
-        return ctx.body = await GroupController.getGroup(ctx.params.groupId);
+        return ctx.body = await GroupController.getGroup(ctx.params.groupId, ctx);
     });
 
     // Get all groups
     router.get('/groups', async (ctx: Context, next: Next) => {
-        return ctx.body = await GroupController.getAllGroups();
+        return ctx.body = await GroupController.getAllGroups(ctx);
     });
 
     // Create group
     router.post('/group/create', async (ctx: Context, next: Next) => {
-        return ctx.body = await GroupController.createGroup(ctx.request.body);
+        return ctx.body = await GroupController.createGroup(ctx.request.body, ctx);
     });
 
     // Update group
     router.put('/group/:groupId', async (ctx: Context, next: Next) => {
-        return ctx.body = await GroupController.updateGroup(ctx.params.groupId, ctx.request.body);
+        return ctx.body = await GroupController.updateGroup(ctx.params.groupId, ctx.request.body, ctx);
     });
 
     // Delete group
     router.delete('/group/:groupId', async (ctx: Context, next: Next) => {
-        return ctx.body = await GroupController.deleteGroup(ctx.params.groupId);
+        return ctx.body = await GroupController.deleteGroup(ctx.params.groupId, ctx);
     });
 
     /* --- Group users routes --- */

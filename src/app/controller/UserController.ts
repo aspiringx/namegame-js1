@@ -61,7 +61,7 @@ export class UserController {
         const data = <createUserPayload>reqPayload;
         const fnReturn = await UserService.createUser(data.values);
 
-        return formatResponse.createResource(fnReturn, ctx); 
+        return formatResponse.createResource(fnReturn, ctx);
     }
 
     static async updateUser(userId: number, reqPayload: unknown, ctx: Context): Promise<Object> {
