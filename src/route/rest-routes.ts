@@ -72,22 +72,22 @@ export function restRoutes(app: Koa): void {
 
     // Get users in group by group id
     router.get('/group/:groupId/users', async (ctx: Context, next: Next) => {
-        return ctx.body = await GroupUserController.getGroupUsers(parseInt(ctx.params.groupId));
+        return ctx.body = await GroupUserController.getGroupUsers(parseInt(ctx.params.groupId), ctx);
     });
 
     // Add user to group
     router.post('/group/:groupId/user', async (ctx: Context, next: Next) => {
-        return ctx.body = await GroupUserController.createGroupUser(ctx.params.groupId, ctx.request.body);
+        return ctx.body = await GroupUserController.createGroupUser(ctx.params.groupId, ctx.request.body, ctx);
     });
 
     // Update user in group
     router.put('/group/:groupId/user/:userId', async (ctx: Context, next: Next) => {
-        return ctx.body = await GroupUserController.updateGroupUser(parseInt(ctx.params.groupId), parseInt(ctx.params.userId), ctx.request.body);
+        return ctx.body = await GroupUserController.updateGroupUser(parseInt(ctx.params.groupId), parseInt(ctx.params.userId), ctx.request.body, ctx);
     });
 
     // Delete user in group
     router.delete('/group/:groupId/user/:userId', async (ctx: Context, next: Next) => {
-        return ctx.body = await GroupUserController.deleteGroupUser(ctx.params.groupId, ctx.params.userId);
+        return ctx.body = await GroupUserController.deleteGroupUser(ctx.params.groupId, ctx.params.userId, ctx);
     });
 
     app.use(router.routes());

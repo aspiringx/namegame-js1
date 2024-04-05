@@ -1,5 +1,8 @@
 import { GroupUserService } from "@service/GroupUserService";
 import { GroupUserEntity } from '@entity/GroupUserEntity';
+import { Context } from "koa";
+
+import formatResponse from "@middleware/ApiCallResponseHandler";
 
 interface createGroupUserPayload {
     values: object
@@ -12,22 +15,30 @@ interface updateGroupUserPayload {
 
 export class GroupUserController {
 
-    static async getGroupUsers(group_id: number) {
-        return GroupUserService.getGroupUsers(group_id);
+    static async getGroupUsers(group_id: number, ctx: Context): Promise<Object> {
+        const fnReturn = await GroupUserService.getGroupUsers(group_id);
+
+        return formatResponse.findResource(fnReturn, ctx);
     }
 
-    static async createGroupUser(groupId: number, payload: unknown): Promise<GroupUserEntity> {
+    static async createGroupUser(groupId: number, payload: unknown, ctx: Context): Promise<Object> {
         const data = <createGroupUserPayload>payload;
-        return GroupUserService.createGroupUser(groupId, data.values);
+        const fnReturn = await GroupUserService.createGroupUser(groupId, data.values);
+
+        return formatResponse.updateResource(fnReturn, ctx);
     }
 
-    static async updateGroupUser(groupId: number, userId: number, payload: unknown): Promise<GroupUserEntity | null> {
+    static async updateGroupUser(groupId: number, userId: number, payload: unknown, ctx: Context): Promise<Object | null> {
         const data = <updateGroupUserPayload>payload;
-        return await GroupUserService.updateGroupUser(groupId, userId, data.values);
+        const fnReturn = await GroupUserService.updateGroupUser(groupId, userId, data.values);
+
+        return formatResponse.updateResource(fnReturn, ctx);
     }
 
-    static async deleteGroupUser(groupId: number, userId: number): Promise<void> {
-        await GroupUserService.deleteGroupUser(groupId, userId);
+    static async deleteGroupUser(groupId: number, userId: number, ctx: Context): Promise<Object> {
+        const fnReturn = await GroupUserService.deleteGroupUser(groupId, userId);
+
+        return formatResponse.deleteResource(fnReturn, ctx);
     }
 
 }

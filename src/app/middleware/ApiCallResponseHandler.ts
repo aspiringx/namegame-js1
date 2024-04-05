@@ -14,8 +14,9 @@ class responseFormatHandler {
      * @returns Formatted response object.
      */
     static async fromExists(fnReturn: Object | null, ctx: Context): Promise<Object> {
+        const hasData = fnReturn !== null ? Object.keys(fnReturn).length : {};
 
-        if(fnReturn) {
+        if(hasData) {
             return { message: this.messages.success,  data: fnReturn};
         } else {
             ctx.status = 404;

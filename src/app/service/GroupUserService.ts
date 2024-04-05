@@ -1,5 +1,6 @@
 import { GroupUserRepository } from "@repository/GroupUserRepository";
 import { GroupUserEntity } from '@entity/GroupUserEntity';
+import { DeleteResult } from "typeorm";
 
 export class GroupUserService {
 
@@ -25,8 +26,8 @@ export class GroupUserService {
     }
 
     // Delete (Deletes user in group)
-    static async deleteGroupUser(groupId: number, userId: number): Promise<void> {
-        await GroupUserRepository.delete({ group_id: groupId, user_id: userId });
+    static async deleteGroupUser(groupId: number, userId: number): Promise<DeleteResult> {
+        return await GroupUserRepository.delete({ group_id: groupId, user_id: userId });
     }
 
 }
