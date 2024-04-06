@@ -5,4 +5,4 @@ build/
 tmp/
 temp/
 .env
-mysql_data/
+mysql_data/**
