@@ -41,7 +41,7 @@ export class UserController {
     }
 
     // Basic calls
-    // NOTE: Example of auto generated responses using a formatReponse handler
+    // NOTE: Example of auto generated responses using a ApiCallResponseHandler middleware
 
     static async getUser(id: number, ctx: Context): Promise<Object> {
         const fnReturn = await UserService.getUser(id);
