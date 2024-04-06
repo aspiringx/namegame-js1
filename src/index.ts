@@ -8,7 +8,7 @@ import { restRoutes } from "@route/rest-routes";
 import { graphqlRoute } from "@route/graphql-route";
 
 import { responseFormatHandler } from "@middleware/ResponseFormatHandler";
-import { uncaughtErrorHandler } from "@middleware/UncaughtErrorHandler";
+import { globalErrorHandler } from "@middleware/GlobalErrorHandler";
 
 import "reflect-metadata";
 import { AppDataSource } from "./db/data-source";
@@ -28,7 +28,7 @@ AppDataSource.initialize().then(async () => {
     app.use(responseFormatHandler);
 
     // Global error handler
-    app.use(uncaughtErrorHandler);
+    app.use(globalErrorHandler);
 
     // Routes
     restRoutes(app);

@@ -32,7 +32,7 @@ export class GroupUserEntity implements GroupUser {
     @JoinColumn({name: 'user_id'})
     user_id!: number;
 
-    @ManyToOne(() => GroupEntity, group => group.group_users, { nullable: false })
+    @ManyToOne(() => GroupEntity, group => group.group_users, { nullable: false, onDelete: 'CASCADE' })
     @JoinColumn({name: 'group_id'})
     group_id!: number;
 

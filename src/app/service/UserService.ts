@@ -1,5 +1,6 @@
 import { UserRepository } from "@repository/UserRepository";
 import { UserEntity } from '@entity/UserEntity';
+import { DeleteResult } from "typeorm";
 
 export class UserService {
 
@@ -32,14 +33,13 @@ export class UserService {
     }
 
     // Update
-    static async updateUser(id: number, user: Partial<UserEntity>): Promise<UserEntity | null> {
-        await UserRepository.update(id, user);
-        return UserRepository.findOne({ where: { id } });
+    static async updateUser(id: number, user: Partial<UserEntity>): Promise<Object | null> {
+        return await UserRepository.update(id, user);
     }
 
     // Delete
-    static async deleteUser(id: number): Promise<void> {
-        await UserRepository.delete(id);
+    static async deleteUser(id: number): Promise<DeleteResult> {
+        return await UserRepository.delete(id);
     }
 
 }
