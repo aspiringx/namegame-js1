@@ -46,33 +46,33 @@ export class UserController {
     static async getUser(id: number, ctx: Context): Promise<Object> {
         const fnReturn = await UserService.getUser(id);
 
-        return formatResponse.findResource(fnReturn, ctx);
+        return formatResponse.fromSingleResult(fnReturn, ctx);
     }
 
     static async getAllUsers(ctx: Context): Promise<Object> {
         const fnReturn = await UserService.getAllUsers();
 
-        return formatResponse.findResource(fnReturn, ctx);
+        return formatResponse.fromResultCollection(fnReturn, ctx);
     }
 
     static async createUser(reqPayload: unknown, ctx: Context): Promise<Object> {
         const data = <createUserPayload>reqPayload;
         const fnReturn = await UserService.createUser(data.values);
 
-        return formatResponse.createResource(fnReturn, ctx);
+        return formatResponse.fromSingleResult(fnReturn, ctx);
     }
 
     static async updateUser(userId: number, reqPayload: unknown, ctx: Context): Promise<Object> {
         const data = <updateUserPayload>reqPayload;
         const fnReturn = await UserService.updateUser(userId, data.values);
 
-        return formatResponse.updateResource(fnReturn, ctx);
+        return formatResponse.fromResultCount(fnReturn, ctx);
     }
 
     static async deleteUser(userId: number, ctx: Context): Promise<Object> {
         const fnReturn = await UserService.deleteUser(userId);
 
-        return formatResponse.deleteResource(fnReturn, ctx);
+        return formatResponse.fromResultCount(fnReturn, ctx);
     }
 
 }

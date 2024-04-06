@@ -1,6 +1,6 @@
 import { GroupUserRepository } from "@repository/GroupUserRepository";
 import { GroupUserEntity } from '@entity/GroupUserEntity';
-import { DeleteResult } from "typeorm";
+import { DeleteResult, UpdateResult } from "typeorm";
 
 export class GroupUserService {
 
@@ -20,9 +20,8 @@ export class GroupUserService {
     }
 
     // Update (Edits user in group)
-    static async updateGroupUser(groupId: number, userId: number, values: Partial<GroupUserEntity>): Promise<GroupUserEntity | null> {
-        await GroupUserRepository.update({ group_id: groupId, user_id: userId }, values);
-        return GroupUserRepository.findOne({ where: { group_id: groupId, user_id: userId } });
+    static async updateGroupUser(groupId: number, userId: number, values: Partial<GroupUserEntity>): Promise<UpdateResult> {
+        return await GroupUserRepository.update({ group_id: groupId, user_id: userId }, values);
     }
 
     // Delete (Deletes user in group)

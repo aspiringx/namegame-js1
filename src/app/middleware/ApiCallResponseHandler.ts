@@ -1,115 +1,66 @@
-import { Context, Next } from "koa";
+import { Context } from "koa";
 
 /**
- * Utility class for formatting response objects.
- * Middleware taps into http call's context and update status and responses.
+ * Utility class for formatting response objects based on TypeORM query return structure.
+ *
+ * Find functions with single result return single object.
+ * Find functions with multiple results return array of objects.
+ * Update and delete functions return object with affected row count.
+ *
+ * NOTE: Success/Fail messages are generic for now.
  */
 class responseFormatHandler {
-    private static messages = {fail: '', success: ''};
 
     /**
-     * Formats response object based on whether fnReturn payload exists or is null.
-     * @param fnReturn The object returned by a function.
+     * Create response from result collection array or null.
+     * @param fnReturn TypeORM query function return.
      * @param ctx The Koa context object.
-     * @returns Formatted response object.
+     * @returns Response object.
      */
-    static async fromExists(fnReturn: Object | null, ctx: Context): Promise<Object> {
-        const hasData = fnReturn !== null ? Object.keys(fnReturn).length : {};
+    static async fromResultCollection(fnReturn: Array<Object> | null, ctx: Context) {
+        const count = fnReturn !== null ? fnReturn.length : 0;
 
-        if(hasData) {
-            return { message: this.messages.success,  data: fnReturn};
+        if(fnReturn !== null) {
+            return { message: count + ' resources found.',  data: fnReturn};
         } else {
             ctx.status = 404;
-            return { message: this.messages.fail,  data: null};
+            return { message: 'Resource not found.',  data: null};
         }
     }
 
     /**
-     * Formats response object based on whether fnReturn returns a count of affected rows or null.
-     * @param count The number of rows affected or null.
+     * Create response from single result object or null.
+     * @param fnReturn TypeORM query function return.
      * @param ctx The Koa context object.
-     * @returns Formatted response object.
+     * @returns Response object.
      */
-    static async fromCount(count: number | null, ctx: Context): Promise<Object> {
-        if(count == null) {
-            ctx.status = 404;
-            return { message: this.messages.fail};
-        }
-
-        if(count) {
-            return { message: this.messages.success};
+    static async fromSingleResult(fnReturn: Object | null, ctx: Context) {
+        if(fnReturn) {
+            return { message: 'Resource found.',  data: fnReturn};
         } else {
             ctx.status = 404;
-            return { message: this.messages.fail};
+            return { message: 'Resource not found.',  data: null};
         }
     }
 
     /**
-     * Formats response object for find operation.
-     * @param fnReturn The object returned by an update function.
+     * Create response from affected row count or null.
+     * @param count TypeORM query function return.
      * @param ctx The Koa context object.
-     * @returns Formatted response object.
+     * @returns Response object.
      */
-    static async findResource(fnReturn: Object | null, ctx: Context): Promise<Object> {
-        this.messages = {
-            success: 'Resource found.',
-            fail: 'Resource not found.'
+    static async fromResultCount(fnReturn: Object | null, ctx: Context): Promise<Object> {
+        let response = {};
+        if(fnReturn !== null && 'affected' in fnReturn) {
+
+            response = { message: fnReturn.affected + ' resources affected.', affected: fnReturn.affected };
+        } else if(fnReturn === null) {
+            ctx.status = 404;
+            response = { message: 'Resource operation failed.'};
         }
 
-        return this.fromExists(fnReturn, ctx)
+        return response;
     }
-
-    /**
-     * Formats response object for create operation.
-     * @param fnReturn The object returned by an update function.
-     * @param ctx The Koa context object.
-     * @returns Formatted response object.
-     */
-    static async createResource(fnReturn: Object | null, ctx: Context): Promise<Object> {
-        this.messages = {
-            success: 'Resource creation successful.',
-            fail: 'Resource creation failed.'
-        }
-
-        return this.fromExists(fnReturn, ctx)
-    }
-
-    /**
-     * Formats response object for update operation.
-     * @param fnReturn The object returned by an update function.
-     * @param ctx The Koa context object.
-     * @returns Formatted response object.
-     */
-    static async updateResource(fnReturn: Object | null, ctx: Context): Promise<Object> {
-        this.messages = {
-            success: 'Resource update successful.',
-            fail: 'Resource update failed.'
-        }
-
-        return this.fromExists(fnReturn, ctx)
-    }
-
-    /**
-     * Formats response object for cancel operation.
-     * @param fnReturn The object returned by an update function.
-     * @param ctx The Koa context object.
-     * @returns Formatted response object.
-     */
-    static async deleteResource(fnReturn: Object, ctx: Context): Promise<Object>{
-        let count: number | null = null;
-
-        if('affected' in fnReturn) {
-            count = fnReturn.affected as number | null;
-        }
-
-        this.messages = {
-            success: 'Resource deletion successful.',
-            fail: count === null ? 'Resource deletion failed.' : 'No resource found to delete.'
-        }
-
-        return this.fromCount(count, ctx);
-    }
-
 }
 
 export default responseFormatHandler;

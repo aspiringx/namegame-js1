@@ -33,9 +33,8 @@ export class UserService {
     }
 
     // Update
-    static async updateUser(id: number, user: Partial<UserEntity>): Promise<UserEntity | null> {
-        await UserRepository.update(id, user);
-        return UserRepository.findOne({ where: { id } });
+    static async updateUser(id: number, user: Partial<UserEntity>): Promise<Object | null> {
+        return await UserRepository.update(id, user);
     }
 
     // Delete

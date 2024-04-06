@@ -21,14 +21,13 @@ export class GroupService {
     }
 
     // Update
-    static async updateGroup(id: number, Group: Partial<GroupEntity>): Promise<GroupEntity | null> {
-        await GroupRepository.update(id, Group);
-        return GroupRepository.findOne({ where: { id } });
+    static async updateGroup(id: number, Group: Partial<GroupEntity>): Promise<Object | null> {
+        return await GroupRepository.update(id, Group);
     }
 
     // Delete
     static async deleteGroup(id: number): Promise<DeleteResult> {
-        return await GroupRepository.delete(id);
+        return await GroupRepository.delete({ id });
     }
 
 }
