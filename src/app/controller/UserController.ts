@@ -1,5 +1,4 @@
 import { UserService } from "@service/UserService";
-import { UserEntity } from '@entity/UserEntity';
 import { Context } from "koa";
 
 import formatResponse from "@middleware/ApiCallResponseHandler";

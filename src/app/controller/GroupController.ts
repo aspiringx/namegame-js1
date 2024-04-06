@@ -1,5 +1,4 @@
 import { GroupService } from "@service/GroupService";
-import { GroupEntity } from '@entity/GroupEntity';
 import { Context } from "koa";
 
 import formatResponse from "@middleware/ApiCallResponseHandler";
