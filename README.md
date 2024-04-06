@@ -11,6 +11,7 @@
 
 	  - `docker compose -f ./docker-mysql-dev.yaml up -d`
 	  ***NOTE:*** This creates a simple mysql container with the `MYSQL_` `.env` variable values.
+    - Create a new database named `MYSQL_DATABASE` (from .env). When the container from the above step is running, you can connect and do this. 
 	  - `npm run migration:run` will build out the database schema.
 	  - `npm run schema:seed` will populate the `users`, `groups` and `group_users` tables.
 5. Run `npm run watch` to start server in hot reload dev mode.

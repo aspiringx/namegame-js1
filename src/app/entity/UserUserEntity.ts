@@ -11,7 +11,7 @@ import {
 import { UserEntity } from '@entity/UserEntity';
 import { GroupEntity } from '@entity/GroupEntity';
 
-interface UserConnection {
+interface UserUser {
     id: number;
     user_id: number;
     user_id_invitee: number;
@@ -19,9 +19,9 @@ interface UserConnection {
     relationship: string;
 }
 
-@Entity({ name: "user_connections" })
+@Entity({ name: "user_users" })
 @Index(['group_id', 'user_id', 'user_id_invitee'], { unique: true })
-export class UserConnectionEntity implements UserConnection {
+export class UserUserEntity implements UserUser {
     @PrimaryGeneratedColumn()
     id!: number;
 
