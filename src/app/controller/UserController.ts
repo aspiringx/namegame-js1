@@ -1,6 +1,8 @@
 import { UserService } from "@service/UserService";
 import { Context } from "koa";
 
+import Joi from "joi";
+
 import formatResponse from "@middleware/ApiCallResponseHandler";
 
 interface greetUserPayload {
@@ -16,6 +18,32 @@ interface updateUserPayload {
     values: object
 }
 
+const userValidationRules = {
+    greetUser: Joi.object({
+        email: Joi.string().email().required()
+    }),
+    getUser: Joi.object({
+        Id: Joi.number().integer().min(1).required()
+    }),
+    createUser: Joi.object({
+        first_name: Joi.string().max(100).required(),
+        last_name: Joi.string().max(100).required(),
+        email: Joi.string().email().required(),
+        photo_url: Joi.string().uri(),
+        mobile_phone: Joi.string()
+    }),
+    updateUser: Joi.object({
+        first_name: Joi.string().max(100).required(),
+        last_name: Joi.string().max(100).required(),
+        email: Joi.string().forbidden(),
+        photo_url: Joi.string().uri(),
+        mobile_phone: Joi.string()
+    }),
+    deleteUser: Joi.object({
+        id: Joi.number().integer().min(1).required()
+    }),
+};
+
 export class UserController {
 
     // Sample call (Step 2): Request user name / Return custom message
@@ -24,6 +52,13 @@ export class UserController {
     static async greetUser(payload: unknown, ctx: Context): Promise<any>{
         const data = <greetUserPayload>payload;
         const name = await UserService.getUserName(data.email);
+
+        // Validate call data
+        const validation = userValidationRules.greetUser.validate({ email: data.email }, { abortEarly: false });
+
+        if('error' in validation && validation.error?.message) {
+            ctx.throw(400, validation.error.message);
+        }
 
         if(name) {
             return {
