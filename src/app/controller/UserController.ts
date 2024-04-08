@@ -55,10 +55,7 @@ export class UserController {
 
         // Validate call data
         const validation = userValidationRules.greetUser.validate({ email: data.email }, { abortEarly: false });
-
-        if('error' in validation && validation.error?.message) {
-            ctx.throw(400, validation.error.message);
-        }
+        ctx.assert(!validation.error?.message, 404, validation.error?.message);
 
         if(name) {
             return {
