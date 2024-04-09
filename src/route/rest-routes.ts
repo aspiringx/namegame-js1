@@ -6,6 +6,7 @@ import { GroupController } from '@controller/GroupController';
 import { GroupUserController } from '@controller/GroupUserController';
 
 import { greetUserPayload, createUserPayload, updateUserPayload } from "../types/UserTypes";
+import { createGroupPayload, updateGroupPayload } from "../types/GroupTypes";
 
 export function restRoutes(app: Koa): void {
     const router = new Router();
@@ -43,10 +44,10 @@ export function restRoutes(app: Koa): void {
         return ctx.body = await GroupController.getAllGroups(ctx);
     });
     router.post('/group/create', async (ctx: Context, next: Next) => {
-        return ctx.body = await GroupController.createGroup(ctx.request.body, ctx);
+        return ctx.body = await GroupController.createGroup(ctx.request.body as createGroupPayload, ctx);
     });
     router.put('/group/:groupId', async (ctx: Context, next: Next) => {
-        return ctx.body = await GroupController.updateGroup(ctx.params.groupId, ctx.request.body, ctx);
+        return ctx.body = await GroupController.updateGroup(ctx.params.groupId, ctx.request.body as updateGroupPayload, ctx);
     });
     router.delete('/group/:groupId', async (ctx: Context, next: Next) => {
         return ctx.body = await GroupController.deleteGroup(ctx.params.groupId, ctx);
