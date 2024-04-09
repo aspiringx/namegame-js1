@@ -14,7 +14,8 @@ class GroupValidator {
             name_full: Joi.string().max(100).required(),
             slug: Joi.string().max(100).required(),
             description: Joi.string(),
-            logo_url: Joi.string().uri()
+            logo_url: Joi.string().uri(),
+            is_active: Joi.number().integer()
         }),
         updateGroup: Joi.object({
             parent_id: Joi.number().integer().min(1),
@@ -22,7 +23,8 @@ class GroupValidator {
             name_full: Joi.string().max(100),
             slug: Joi.string().max(100),
             description: Joi.string(),
-            logo_url: Joi.string().uri()
+            logo_url: Joi.string().uri(),
+            is_active: Joi.number().integer()
         }),
         deleteGroup: Joi.object({
             id: Joi.number().integer().min(1).required()
