@@ -40,6 +40,9 @@ export class GroupController {
 
     static async updateGroup(groupId: number, reqPayload: updateGroupPayload, ctx: Context): Promise<Object> {
 
+        // All update values are optional but return error on empty payload
+        ctx.assert(Object.keys(reqPayload.values).length, 422, 'Empty request payload.');
+
         const validation = groupValidator.updateGroup(reqPayload);
         ctx.assert(!validation.error?.message, 400, validation.error?.message);
 
