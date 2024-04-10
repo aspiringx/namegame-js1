@@ -46,6 +46,12 @@ export class UserController {
     // Basic CRUD calls
     // NOTE: Abstracted validation and response (i.e. Cleaner but complex setup)
 
+    /**
+     * Retrieves a specific user by their ID.
+     * @param id The ID of the user to retrieve.
+     * @param ctx The Koa context object.
+     * @returns A promise resolving to an object representing the user.
+     */
     static async getUser(id: number, ctx: Context): Promise<Object> {
 
         const validation = userValidator.getUser(id);
@@ -56,7 +62,11 @@ export class UserController {
         return formatResponse.fromSingleResult(fnReturn, ctx);
     }
 
-
+    /**
+     * Retrieves all users.
+     * @param ctx The Koa context object.
+     * @returns A promise resolving to a collection of user objects.
+     */
     static async getAllUsers(ctx: Context): Promise<Object> {
 
         const fnReturn = await UserService.getAllUsers();
@@ -64,7 +74,12 @@ export class UserController {
         return formatResponse.fromResultCollection(fnReturn, ctx);
     }
 
-
+    /**
+     * Creates a new user.
+     * @param reqPayload The payload containing user data.
+     * @param ctx The Koa context object.
+     * @returns A promise resolving to the result of the create operation.
+     */
     static async createUser(reqPayload: createUserPayload, ctx: Context): Promise<Object> {
 
         const validation = userValidator.createUser(reqPayload);
@@ -75,7 +90,13 @@ export class UserController {
         return formatResponse.fromSingleResult(fnReturn, ctx);
     }
 
-
+    /**
+     * Updates an existing user's details.
+     * @param userId The ID of the user to update.
+     * @param reqPayload The payload containing updated user data.
+     * @param ctx The Koa context object.
+     * @returns A promise resolving to the result of the update operation.
+     */
     static async updateUser(userId: number, reqPayload: updateUserPayload, ctx: Context): Promise<Object> {
 
         // All update values are optional but return error on empty payload
@@ -89,7 +110,12 @@ export class UserController {
         return formatResponse.fromResultCount(fnReturn, ctx);
     }
 
-
+    /**
+     * Deletes a user by their ID.
+     * @param id The ID of the user to delete.
+     * @param ctx The Koa context object.
+     * @returns A promise resolving to the result of the delete operation.
+     */
     static async deleteUser(id: number, ctx: Context): Promise<Object> {
 
         const validation = userValidator.deleteUser(id);

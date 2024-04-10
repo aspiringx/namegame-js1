@@ -8,6 +8,12 @@ import { createGroupPayload, updateGroupPayload } from "../../types/GroupTypes";
 
 export class GroupController {
 
+    /**
+     * Retrieves a specific group by its ID.
+     * @param id The ID of the group to retrieve.
+     * @param ctx The Koa context object.
+     * @returns A promise resolving to an object representing the group.
+     */
     static async getGroup(id: number, ctx: Context): Promise<Object> {
 
         const validation = groupValidator.getGroup(id);
@@ -18,7 +24,11 @@ export class GroupController {
         return formatResponse.fromSingleResult(fnReturn, ctx);
     }
 
-
+    /**
+     * Retrieves all groups.
+     * @param ctx The Koa context object.
+     * @returns A promise resolving to a collection of group objects.
+     */
     static async getAllGroups(ctx: Context): Promise<Object> {
 
         const fnReturn = await GroupService.getAllGroups();
@@ -26,7 +36,12 @@ export class GroupController {
         return formatResponse.fromResultCollection(fnReturn, ctx);
     }
 
-
+    /**
+     * Creates a new group.
+     * @param reqPayload The payload containing group data.
+     * @param ctx The Koa context object.
+     * @returns A promise resolving to the result of the create operation.
+     */
     static async createGroup(reqPayload: createGroupPayload, ctx: Context): Promise<Object> {
 
         const validation = groupValidator.createGroup(reqPayload);
@@ -37,7 +52,13 @@ export class GroupController {
         return formatResponse.fromSingleResult(fnReturn, ctx);
     }
 
-
+    /**
+     * Updates an existing group's details.
+     * @param groupId The ID of the group to update.
+     * @param reqPayload The payload containing updated group data.
+     * @param ctx The Koa context object.
+     * @returns A promise resolving to the result of the update operation.
+     */
     static async updateGroup(groupId: number, reqPayload: updateGroupPayload, ctx: Context): Promise<Object> {
 
         // All update values are optional but return error on empty payload
@@ -51,7 +72,12 @@ export class GroupController {
         return formatResponse.fromResultCount(fnReturn, ctx);
     }
 
-
+    /**
+     * Deletes a group by its ID.
+     * @param groupId The ID of the group to delete.
+     * @param ctx The Koa context object.
+     * @returns A promise resolving to the result of the delete operation.
+     */
     static async deleteGroup(groupId: number, ctx: Context): Promise<Object> {
 
         const validation = groupValidator.deleteGroup(groupId);
